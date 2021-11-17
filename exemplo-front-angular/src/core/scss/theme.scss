@@ -1,0 +1,33 @@
+@import "src/core/components/countdown/countdown.theme";
+@import "src/core/components/material-color-picker/material-color-picker.theme";
+@import "src/core/components/search-bar/search-bar.theme";
+@import "src/core/components/sidebar/sidebar.theme";
+@import "src/core/components/theme-options/theme-options.theme";
+@import "src/core/components/widget/widget.theme";
+//@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+//@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+@mixin core-core-theme($theme) {
+
+    // Theming for Core core styles
+    @include colors-theme($theme);
+    @include cards-theme($theme);
+    @include material-theme($theme);
+    @include page-layouts-theme($theme);
+    @include typography-theme($theme);
+
+    // Theming for Core components
+    @include core-countdown-theme($theme);
+    @include core-search-bar-theme($theme);
+    @include core-sidebar-theme($theme);
+    @include core-theme-options-theme($theme);
+    @include core-material-color-picker-theme($theme);
+    @include core-widget-theme($theme);
+
+    // Theming for 3rd party components
+    @include ngx-datatable-theme($theme);
+
+
+}
+

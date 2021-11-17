@@ -1,0 +1,23 @@
+
+.renegociacao-action-buttons {
+    padding-bottom: 20px;
+}
+
+.renegociacao-headers-align .mat-expansion-panel-header-title,
+.renegociacao-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.renegociacao-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+.renegociacao-header-image {
+    background-image: url(~/assets/images/caixa/icons/cash-receiving-128.jpg);
+    background-size: cover;
+}
+
+.renegociacao-container {
+    padding: 16px;
+    margin-bottom: 16px;
+}

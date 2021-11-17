@@ -1,0 +1,51 @@
+<form [formGroup]="formGroup">
+    <mat-dialog-content>
+        <siiga-debugger [data]="
+    [
+        { label: 'model', value: model },
+        { label: 'listModels', value:  listModels },
+        { label: 'selectedModels', value: selectedModels },
+        { label: 'extraParams', value: extraParams },
+        { label: 'extraParamsFromParent', value: extraParamsFromParent },
+        { label: 'forGroup', value: formGroup.value }
+    ]">
+        </siiga-debugger>
+        <mat-card fxLayout="column">
+            <mat-card-header class="mt-20">
+                <div mat-card-avatar class="grupo-header-image" style="border-radius: 0%;"></div>
+                <mat-card-title>Incluir Grupo</mat-card-title>
+                <mat-card-subtitle>Cadastramento de grupo para situação especial</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content class="m-0">
+
+                <div fxLayout="column" fxLayoutAlign="start stretch">
+
+                    <mat-form-field appearance="outline" class="mr-16">
+                        <mat-label>Código</mat-label>
+                        <input matInput
+                               required
+                               formControlName="id"
+                               maxlength="5"
+                               placeholder="Informe o código do grupo">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nome</mat-label>
+                        <input matInput
+                               required
+                               formControlName="descricao"
+                               maxlength="255"
+                               placeholder="Informe o nome do grupo">
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" [mat-dialog-close]="undefined"><mat-icon class="mr-8">cancel</mat-icon>Cancelar</button>
+        <button mat-raised-button color="primary"
+                (click)="insertGrupo();">
+            <mat-icon class="mr-8">save</mat-icon>Salvar
+        </button>
+    </mat-dialog-actions>
+</form>

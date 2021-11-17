@@ -1,0 +1,20 @@
+<mat-accordion class="example-headers-align panel-group form-horizontal w-100-p" multi>
+    <mat-expansion-panel class="panel panel-default" [expanded]="openChildren">
+        <mat-expansion-panel-header class="panel-heading">
+            <mat-panel-title class="panel-title">
+                <span class="icon-user"> </span> {{title}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="panel-body" >
+            <div xLayout="row" fxLayoutAlign="start" >
+                <template #loadComponentHeader></template> <!-- ex: RetornoConsultarMargemSERPROV2Component-->
+            </div>
+            <div xLayout="row" fxLayoutAlign="start" >
+                <template #loadComponentRow></template> <!-- ex: VinculoFuncioalSERPROComponent-->
+            </div>
+
+        </div>
+
+    </mat-expansion-panel>
+</mat-accordion>

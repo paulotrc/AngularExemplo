@@ -1,0 +1,18 @@
+<div class="nav" [ngClass]="{'horizontal':layout === 'horizontal', 'vertical':layout === 'vertical'}">
+
+    <!-- Vertical Navigation Layout -->
+    <ng-container *ngIf="layout === 'vertical'">
+
+        <ng-container *ngFor="let item of navigation">
+
+            <core-nav-vertical-group *ngIf="item.type=='group'" [item]="item"></core-nav-vertical-group>
+            <core-nav-vertical-collapsable *ngIf="item.type=='collapsable'"
+                                           [item]="item"></core-nav-vertical-collapsable>
+            <core-nav-vertical-item *ngIf="item.type=='item'" [item]="item"></core-nav-vertical-item>
+
+        </ng-container>
+
+    </ng-container>
+    <!-- / Vertical Navigation Layout -->
+
+</div>

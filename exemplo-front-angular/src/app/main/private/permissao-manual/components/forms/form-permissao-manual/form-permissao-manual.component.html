@@ -1,0 +1,32 @@
+<form [formGroup]="formGroup">
+    <mat-card fxLayout="column" class="mt-28 mr-28 ml-28 mb-28 pr-32 pl-32">
+        <mat-card-header class="mt-20">
+            <div mat-card-avatar class="permissao-header-image" style="border-radius: 0%;"></div>
+            <mat-card-title>Incluir permissão manual</mat-card-title>
+            <mat-card-subtitle>Cadastramento de permissao manual</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content class="m-0">
+            <label>Informe os perfis de usuário que poderão aplicar a situação manualmente</label>
+            <div fxLayout="column" fxLayoutAlign="start stretch">
+
+                <div class="content mb-16">
+                    <dynamic-list [title]="'Perfis'"
+                                  [dataSource]="dataSource"
+                                  [modelService]="modelService"
+                                  [dynamicColumns]="dynamicColumns"
+                                  [page]="page"
+                                  [useDefaultActions] = "false"
+                                  (onReload)="updateDataProvider($event)"
+                                  (onToggleSelectedModel)="onSelectedChangeModels($event)"
+                                  [showToobar]="false">
+                    </dynamic-list>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="mb-16">
+            <button mat-raised-button color="warn"><mat-icon class="mr-8">keyboard_return</mat-icon>Voltar</button>
+            <button mat-raised-button color="primary"><mat-icon class="mr-8">save</mat-icon>Salvar</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

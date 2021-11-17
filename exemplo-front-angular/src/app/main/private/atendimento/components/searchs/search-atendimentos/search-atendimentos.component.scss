@@ -1,0 +1,10 @@
+@import "src/core/scss/app";
+
+.atendimento-header-image {
+    background-image: url(~/assets/images/caixa/icons/headset-128.jpg);
+    background-size: cover;
+}
+
+mat-card-actions {
+    bottom: 0;
+}

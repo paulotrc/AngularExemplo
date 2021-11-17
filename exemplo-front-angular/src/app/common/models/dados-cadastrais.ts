@@ -1,0 +1,33 @@
+export class DadosCadastrais {
+    cpfCnpj: string;
+    identificacao: string;
+    codigoBancoComDv: string;
+    cedente: string;
+    agenciaCodigo: string;
+    especie: string;
+    numeroDocumento: string;
+    sacado: string;
+    dataDocumento: string;
+    especieDocumento: string;
+    aceite: string;
+    dataProcessamento: string;
+    instrucoes1: string;
+    instrucoes2: string;
+    instrucoes3: string;
+    instrucoes4: string;
+    endereco1: string;
+    endereco2: string;
+    descontoAbatimento: string;
+    localPagamento: string;
+    usoBanco: string;
+    carteira: string;
+    quantidade: string;
+    valorBoleto: string;
+    demonstrativo1: string;
+    demonstrativo2: string;
+    demonstrativo3: string;
+    outrasDeducoes: string;
+    multaMora: string;
+    outrosAcrescimos: string;
+    valorCobrado: string;
+}

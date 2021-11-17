@@ -1,0 +1,51 @@
+<mat-card fxLayout="column" class="mt-28 mr-28 ml-28" >
+    <mat-card-header class="mt-20">
+        <div mat-card-avatar class="atendimento-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title>Meus Atendimentos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="m-0">
+        <div class="mat-card mat-elevation-z4 p-24 mr-24 mt-16" fxLayout="column" fxLayoutAlign="start stretch">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <form [formGroup]="formGroup">
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                            <mat-form-field appearance="outline" class="pl-4">
+                                <mat-label>CPF ou Contrato</mat-label>
+                                <input matInput formControlName="cpfCnpj"
+                                       placeholder="Favor informar o CPF ou Contrato"
+                                       required>
+                            </mat-form-field>
+
+                            <button mat-raised-button color="primary"
+                                     class="pl-16 mb-16 ml-16"
+                                    (click)="updateDataProvider()">
+                                Pesquisar
+                            </button>
+                        </div>
+                </form>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <dynamic-list [title]="'Atendimentos'"
+                              [dataSource]="dataSource"
+                              [modelService]="modelService"
+                              [dynamicColumns]="dynamicColumns"
+                              [dynamicComponent]="formComponent"
+                              [page]="page"
+                              (onReload)="updateDataProvider($event)"
+                              (onToggleSelectedModel)="onSelectedChangeModels($event)"
+                              [showToobar]="true"
+                              [menuActions]="menuActions"
+                              (onRedirectSelected)="redirecionaAtendimento($event)" >
+                </dynamic-list>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="mb-20 mr-16 pt-24">
+        <button id="btnVoltar"
+                mat-raised-button
+                (click)="router.navigate([''])"
+                class="btn m-4"  color="primary">
+            <mat-icon>arrow_back</mat-icon>&nbsp;&nbsp;Voltar
+        </button>
+        <button mat-raised-button color="primary">Renegociar</button>
+    </mat-card-actions>
+</mat-card>

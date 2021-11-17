@@ -1,0 +1,124 @@
+<siiga-debugger [data]="
+    [
+        { label: 'model', value: model },
+        { label: 'listModels', value:  listModels },
+        { label: 'selectedModels', value: selectedModels },
+        { label: 'extraParams', value: extraParams },
+        { label: 'extraParamsFromParent', value: extraParamsFromParent },
+        { label: 'forGroup', value: formGroup.value }
+    ]">
+</siiga-debugger>
+
+
+<mat-card fxLayout="column" class="mt-28 mr-28 ml-28 mb-28 pr-32 pl-32">
+    <mat-card-header class="mt-20">
+        <div mat-card-avatar class="situacao-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title>Incluir Situação Especial</mat-card-title>
+        <mat-card-subtitle>Cadastramento de situação especial</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="m-0">
+        <form [formGroup]="formGroup">
+            <div fxLayout="column" fxLayoutAlign="start stretch">
+
+                <div fxLayout="row" fxLayoutAlign="start center">
+
+                    <div fxFlex="50">
+                        <label>Selecionar o grupo da situação especial por: </label>
+                        <mat-radio-group [(ngModel)]="tipoConsultaGrupo" formControlName="opcaoGrupo">
+                            <mat-radio-button [value]="true" class="ml-4 mr-4" [checked]="tipoConsultaGrupo">Código</mat-radio-button>
+                            <mat-radio-button [value]="false" class="ml-4 mr-4" [checked]="!tipoConsultaGrupo">Nome</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <mat-form-field appearance="outline" fxFlex="50"
+                                    class="pl-16">
+                        <mat-label>Grupo</mat-label>
+                        <mat-select required *ngIf="tipoConsultaGrupo" formControlName="grupo">
+                            <mat-option *ngFor="let item of todosGrupos" [value]="item.id">{{item.id}}</mat-option>
+                        </mat-select>
+                        <mat-select required *ngIf="!tipoConsultaGrupo" formControlName="grupo">
+                            <mat-option *ngFor="let item of todosGrupos" [value]="item.id">{{item.descricao}}</mat-option>
+                        </mat-select>
+                        <mat-error>Campo Grupo é de preenchimento obrigatório!</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-raised-button color="primary" class="ml-16" (click)="openInclusaoGrupo()"><mat-icon class="mr-8">add</mat-icon>Incluir Grupo</button>
+                </div>
+
+                <mat-label>Situação Especial</mat-label>
+
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="mb-16">
+                    <mat-form-field appearance="outline" fxFlex="33" class="mr-16">
+                        <mat-label>Código</mat-label>
+                        <input matInput
+                               required
+                               formControlName="idSituacao"
+                               maxlength="5"
+                               placeholder="Informe o código da situação especial">
+                        <mat-error>Campo Código é de preenchimento obrigatório!</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" fxFlex="33">
+                        <mat-label>Nome</mat-label>
+                        <input matInput
+                               required
+                               formControlName="descricaoSituacao"
+                               maxlength="100"
+                               placeholder="Informe o nome da situação especial">
+                        <mat-error>Campo Nome é de preenchimento obrigatório!</mat-error>
+                    </mat-form-field>
+
+                </div>
+
+                <mat-label class="mb-16">Informe o que a situação especial impedirá</mat-label>
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="mb-16">
+                    <mat-checkbox [formControlName]="item.id" fxFlex="30" *ngFor="let item of impedimentos?.slice(0, 3);" [value]="item.id" cdk-scrollable (change)="checkImpedimento($event, item)">{{item.descricao}}</mat-checkbox>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="mb-16">
+                    <mat-checkbox [formControlName]="item.id" fxFlex="30" *ngFor="let item of impedimentos?.slice(3, 6);" [value]="item.id" (change)="checkImpedimento($event, item)">{{item.descricao}}</mat-checkbox>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="mb-16">
+                    <mat-checkbox [formControlName]="item.id" fxFlex="30" *ngFor="let item of impedimentos?.slice(6, 9);" [value]="item.id" (change)="checkImpedimento($event, item)">{{item.descricao}}</mat-checkbox>
+                </div>
+                <!--<mat-label class="mb-16">Informe o que a situação especial impedirá</mat-label>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="mb-16" *ngFor="let item of impedimentos?.slice(0, 3);let i=index;">
+        <mat-checkbox fxFlex="20" formControlName="imp0" [value]="impedimentos[0]?.id">{{impedimentos[0]?.descricao}}</mat-checkbox>
+        <mat-checkbox fxFlex="20" formControlName="imp1" [value]="impedimentos[1]?.id">{{impedimentos[1]?.descricao}}</mat-checkbox>
+        <mat-checkbox fxFlex="20" formControlName="imp2" [value]="impedimentos[2]?.id">{{impedimentos[2]?.descricao}}</mat-checkbox>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="mb-16" *ngFor="let item of impedimentos?.slice(3, 6);let i=index;">
+        <mat-checkbox fxFlex="20" formControlName="imp3" [value]="impedimentos[3].id">{{impedimentos[3].descricao}}</mat-checkbox>
+        <mat-checkbox fxFlex="20" formControlName="imp4" [value]="impedimentos[4].id">{{impedimentos[4].descricao}}</mat-checkbox>
+        <mat-checkbox fxFlex="20" formControlName="imp5" [value]="impedimentos[5].id">{{impedimentos[5].descricao}}</mat-checkbox>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="mb-16" *ngFor="let item of impedimentos?.slice(6, 9);let i=index;">
+        <mat-checkbox fxFlex="20" formControlName="imp6" [value]="impedimentos[6].id">{{impedimentos[6].descricao}}</mat-checkbox>
+        <mat-checkbox fxFlex="20" formControlName="imp7" [value]="impedimentos[7].id">{{impedimentos[7].descricao}}</mat-checkbox>
+        <mat-checkbox fxFlex="20" formControlName="imp8" [value]="impedimentos[8].id">{{impedimentos[8].descricao}}</mat-checkbox>
+    </div> -->
+
+
+
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="mb-16">
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Observação</mat-label>
+                        <textarea matInput
+                                  maxlength="300"
+                                  formControlName="observacao"
+                                  placeholder="Informe a observação"></textarea>
+                    </mat-form-field>
+                </div>
+
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="mb-16">
+        <button mat-raised-button color="warn" (click)="retornar();"><mat-icon class="mr-8">cancel</mat-icon>Cancelar</button>
+        <button mat-raised-button color="primary" (click)="salvaSituacao();"><mat-icon class="mr-8">save</mat-icon>Salvar</button>
+    </mat-card-actions>
+</mat-card>

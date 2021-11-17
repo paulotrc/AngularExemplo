@@ -1,0 +1,267 @@
+﻿<mat-card fxLayout="column" class="mt-28 mr-28 ml-28">
+    <mat-card-header class="mt-20 ml-16">
+        <div mat-card-avatar class="cliente-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title>Identifique o cliente</mat-card-title>
+        <mat-card-subtitle>Pesquise ou chame a próxima senha de atendimento</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="m-0">
+        <form [formGroup]="formGroup">
+
+
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="25" class="ml-16 mt-16">
+                    <mat-label>CPF ou CNPJ</mat-label>
+                    <input matInput formControlName="cpfCnpj" [mask]="getCpfCnpjMask()" [(ngModel)]="model.cpfCnpj"
+                           placeholder="Favor informar o CPF ou CNPJ"
+                           required>
+                </mat-form-field>
+                <button mat-raised-button color="primary"
+                        class="pl-16 mb-16 ml-16 mt-16"
+                        (click)="sendDataOperation('get', 'clientes', 'cliente', 'clientes/dados-cadastrais','','clientes-inicio-atendimento/{cpfCnpj}' , null, 'edit')">
+                    <mat-icon>search</mat-icon>&nbsp;&nbsp;Pesquisar
+                </button>
+            </div>
+        </form>
+        <div fxLayout="column" class="mt-16 ml-16">
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <button mat-raised-button color="primary" routerLink="/atendimentos/search-atendimentos" class="mr-16"><mat-icon>all_inbox</mat-icon>&nbsp;&nbsp; Ver Todos</button>
+                <mat-label fxFlex="15"><h3>Últimos Atendimentos</h3></mat-label>
+
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center" class="mt-24">
+
+                <mat-card *ngFor="let item of ultimosAtendimentos" class="card-ultimos-atendimentos ml-16" title="{{titleExplicativo(item.estadoAtualAtendimento)}}"
+                          (click)="sendDataOperationByState(item)">
+                    <mat-card-header>
+                        <div mat-card-avatar class="ultimo-card-header-image" style="border-radius: 0%;"></div>
+                        <mat-card-title class="mat-card-title docs-component-list-card-title">
+                            {{item.nomeCliente}}
+                        </mat-card-title>
+                        <mat-card-subtitle>{{item.cpfCnpj | mask: '000.000.000-00'}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            Data do Atendimento {{item.data | date: 'dd/MM/yyyy'}}
+                            <mat-icon class="{{item.estadoAtualAtendimento.toLowerCase()}}">stop</mat-icon>
+                            {{item.estadoAtualAtendimento}}
+                        </div>
+
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="mb-20 mr-16 pt-24">
+    </mat-card-actions>
+</mat-card>
+<!--<form [formGroup]="formGroup">
+    <div id="ID01">
+        <div id="Group_4">
+            <mat-form-field appearance="outline" class="Rectangle_14">
+                <input matInput formControlName="cpfCnpj" [mask]="getCpfCnpjMask()" [(ngModel)]="model.cpfCnpj"
+                       id="Rectangle_14"
+                       required>
+            </mat-form-field>
+            <div id="CPF_CNPJ__Contrato_ou_Boleto">
+                <span>CPF, CNPJ, Contrato ou Boleto</span>
+            </div>
+        </div>
+        <a id="Group_2" (click)="sendDataOperation('get', 'clientes', 'cliente', 'clientes/dados-cadastrais','','clientes-inicio-atendimento/{cpfCnpj}' , null, 'edit')">
+            <svg class="Rectangle_14_y">
+                <linearGradient id="Rectangle_14_y" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+                    <stop offset="0" stop-color="#0071cf" stop-opacity="1"></stop>
+                    <stop offset="1" stop-color="#005ca9" stop-opacity="1"></stop>
+                </linearGradient>
+                <rect id="Rectangle_14_y" rx="2" ry="2" x="0" y="0" width="180" height="48">
+                </rect>
+            </svg>
+            <div id="Pesquisar">
+                <span>Pesquisar</span>
+            </div>
+        </a>
+        <svg class="Line_5" viewBox="0 0 1 118">
+            <path id="Line_5" d="M 0 0 L 0 118">
+            </path>
+        </svg>
+        <div onclick="application.goToTargetView(event)" id="Group_24">
+            <svg class="Path_2_" viewBox="0 0 252.997 48">
+                <linearGradient id="Path_2_" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+                    <stop offset="0" stop-color="#feb200" stop-opacity="1"></stop>
+                    <stop offset="1" stop-color="#ec7500" stop-opacity="1"></stop>
+                </linearGradient>
+                <path id="Path_2_" d="M 1.349318623542786 0 L 251.6479187011719 0 C 252.3931427001953 0 252.9972381591797 0.3737448751926422 252.9972381591797 0.8347826600074768 L 252.9972381591797 47.16521453857422 C 252.9972381591797 47.62625122070313 252.3931427001953 48 251.6479187011719 48 L 1.349318623542786 48 C 0.6041104197502136 48 0 47.62625122070313 0 47.16521453857422 L 0 0.8347826600074768 C 0 0.3737448751926422 0.6041104197502136 0 1.349318623542786 0 Z">
+                </path>
+            </svg>
+            <div id="Group_23">
+                <div id="Senha_de_Atendimento">
+                    <span>Senha de Atendimento</span>
+                </div>
+                <svg class="Path" viewBox="0 0 9.005 5.257">
+                    <path id="Path" d="M 0.7573993802070618 -6.027571791962494e-25 L 8.247776985168457 -6.563785003929278e-24 C 8.921281814575195 -7.099776545981694e-24 9.258033752441406 0.8151293992996216 8.782804489135742 1.290359139442444 L 5.037614822387695 5.035547733306885 C 4.741776943206787 5.331387042999268 4.263400077819824 5.331387042999268 3.97070837020874 5.035547733306885 L 0.2223723977804184 1.290359139442444 C -0.2528574466705322 0.8151293992996216 0.08389483392238617 -6.676556318812308e-26 0.7573993802070618 -6.027571791962494e-25 Z">
+                    </path>
+                </svg>
+            </div>
+        </div>
+        <div id="ltimos_Atendimentos">
+            <span>Últimos Atendimentos</span>
+        </div>
+        <div id="Group_26">
+            <svg class="Rectangle_16">
+                <rect id="Rectangle_16" rx="6" ry="6" x="0" y="0" width="280" height="132">
+                </rect>
+            </svg>
+            <div id="Status">
+                <span>Laura Fernandes Silva</span>
+            </div>
+            <div id="Status_bb">
+                <span>Contrato #4328129312</span>
+            </div>
+            <div id="Group_25">
+                <div id="Status_bd">
+                    <span>PAGO</span>
+                </div>
+                <svg class="Ellipse_3_bn">
+                    <ellipse id="Ellipse_3_bn" rx="4" ry="4" cx="4" cy="4">
+                    </ellipse>
+                </svg>
+                <div id="Status_bf">
+                    <span>13 Ago </span>
+                </div>
+                <svg class="Line_6" viewBox="0 0 244 1">
+                    <path id="Line_6" d="M 244 0 L 0 0">
+                    </path>
+                </svg>
+            </div>
+        </div>
+        <div id="Group_27">
+            <svg class="Rectangle_16_bi">
+                <rect id="Rectangle_16_bi" rx="6" ry="6" x="0" y="0" width="287" height="132">
+                </rect>
+            </svg>
+            <div id="Status_bj">
+                <span>Laura Fernandes Silva</span>
+            </div>
+            <div id="Status_bk">
+                <span>Contrato #4328129312</span>
+            </div>
+            <div id="Group_25_bl">
+                <div id="Status_bm">
+                    <span>PAGO</span>
+                </div>
+                <svg class="Ellipse_3_bn">
+                    <ellipse id="Ellipse_3_bn" rx="4" ry="4" cx="4" cy="4">
+                    </ellipse>
+                </svg>
+                <div id="Status_bo">
+                    <span>13 Ago </span>
+                </div>
+                <svg class="Line_6_bp" viewBox="0 0 251 1">
+                    <path id="Line_6_bp" d="M 251 0 L 0 0">
+                    </path>
+                </svg>
+            </div>
+        </div>
+        <div onclick="application.goToTargetView(event)" id="Group_31">
+            <div id="Ver_Todos">
+                <span>Ver Todos</span>
+            </div>
+            <svg class="Path_bs" viewBox="0 0 7.292 4.257">
+                <path id="Path_bs" d="M 0.613321840763092 -1.736703709684382e-24 L 6.678829669952393 -6.563785003929278e-24 C 7.224215984344482 -6.997816273981878e-24 7.496908664703369 0.6600700616836548 7.112080574035645 1.044898390769958 L 4.079326152801514 4.077652454376221 C 3.839764595031738 4.317214965820313 3.452387571334839 4.317214965820313 3.215373754501343 4.077652454376221 L 0.180071234703064 1.044898390769958 C -0.2047572135925293 0.6600700616836548 0.06793580204248428 -1.302672045201329e-24 0.613321840763092 -1.736703709684382e-24 Z">
+                </path>
+            </svg>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div id="Group_32" *ngFor="let item of ultimosAtendimentos">
+                <svg class="Rectangle_16_bu">
+                    <rect id="Rectangle_16_bu" rx="6" ry="6" x="0" y="0" width="287" height="132">
+                    </rect>
+                </svg>
+                <div id="Status_bv">
+                    <span>{{ultimosAtendimentos[0].nomeCliente}}</span>
+                </div>
+                <div id="Status_bw">
+                    <span>
+                        CPF: {{ultimosAtendimentos[0].cpfCnpj | mask: '000.000.000-00'}}</span>
+                </div>
+                <div id="Group_25_bx">
+                    <div id="Status_by">
+                        <span>Atendimento em {{ultimosAtendimentos[0].data | date: 'dd/MM/yyyy'}}</span>
+                    </div>
+                    <svg class="Line_6_bz" viewBox="0 0 251 1">
+                        <path id="Line_6_bz" d="M 251 0 L 0 0">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div id="Group_78">
+            <svg class="Rectangle_16_b">
+                <rect id="Rectangle_16_b" rx="6" ry="6" x="0" y="0" width="287" height="132">
+                </rect>
+            </svg>
+            <div id="Status_b">
+                <span>{{ultimosAtendimentos[1].nomeCliente}}</span>
+            </div>
+            <div id="Status_ca">
+                <span>CPF: {{ultimosAtendimentos[1].cpfCnpj | mask: '000.000.000-00'}}</span>
+            </div>
+            <div id="Group_25_b">
+                <div id="Status_cb">
+                    <span>Atendimento em {{ultimosAtendimentos[1].data | date: 'dd/MM/yyyy'}}</span>
+                </div>
+                <svg class="Line_6_b" viewBox="0 0 251 1">
+                    <path id="Line_6_b" d="M 251 0 L 0 0">
+                    </path>
+                </svg>
+            </div>
+        </div>
+        <div id="Group_79">
+            <svg class="Rectangle_16_ca">
+                <rect id="Rectangle_16_ca" rx="6" ry="6" x="0" y="0" width="287" height="132">
+                </rect>
+            </svg>
+            <div id="Status_cc">
+                <span>{{ultimosAtendimentos[2].nomeCliente}}</span>
+            </div>
+            <div id="Status_cd">
+                <span>CPF: {{ultimosAtendimentos[2].cpfCnpj | mask: '000.000.000-00'}}</span>
+            </div>
+            <div id="Group_25_cb">
+                <div id="Status_ce">
+                    <span>Atendimento em {{ultimosAtendimentos[2].data | date: 'dd/MM/yyyy'}}</span>
+                </div>
+                <svg class="Line_6_cd" viewBox="0 0 251 1">
+                    <path id="Line_6_cd" d="M 251 0 L 0 0">
+                    </path>
+                </svg>
+            </div>
+        </div>
+        <div id="Group_80">
+            <svg class="Rectangle_16_cf">
+                <rect id="Rectangle_16_cf" rx="6" ry="6" x="0" y="0" width="287" height="132">
+                </rect>
+            </svg>
+            <div id="Status_cg">
+                <span>{{ultimosAtendimentos[3].nomeCliente}}</span>
+            </div>
+            <div id="Status_ch">
+                <span>CPF: {{ultimosAtendimentos[3].cpfCnpj | mask: '000.000.000-00'}}</span>
+            </div>
+            <div id="Group_25_ci">
+                <div id="Status_cj">
+                    <span>Atendimento em {{ultimosAtendimentos[3].data | date: 'dd/MM/yyyy'}}</span>
+                </div>
+                <svg class="Line_6_ck" viewBox="0 0 251 1">
+                    <path id="Line_6_ck" d="M 251 0 L 0 0">
+                    </path>
+                </svg>
+            </div>
+        </div>
+        <div id="Identifique_o_cliente">
+            <span>Identifique o cliente</span>
+        </div>
+        <div id="Pesquise_ou_chame_a_prxima_sen">
+            <span>Pesquise ou chame a próxima senha de atendimento.</span>
+        </div>
+    </div>
+</form>-->

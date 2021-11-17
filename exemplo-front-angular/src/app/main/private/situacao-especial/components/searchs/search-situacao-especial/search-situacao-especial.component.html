@@ -1,0 +1,66 @@
+<siiga-debugger [data]="
+    [
+        { label: 'model', value: model },
+        { label: 'listModels', value:  listModels },
+        { label: 'selectedModels', value: selectedModels },
+        { label: 'extraParams', value: extraParams },
+        { label: 'extraParamsFromParent', value: extraParamsFromParent },
+        { label: 'forGroup', value: formGroup.value }
+    ]">
+</siiga-debugger>
+<mat-card fxLayout="column" class="mt-28 mr-28 ml-28 pr-28 pl-28 pb-28">
+    <mat-card-header class="mt-20">
+        <div mat-card-avatar class="situacao-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title>Consultar situação especial</mat-card-title>
+        <mat-card-subtitle>Listagem de situação especial</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form [formGroup]="formGroup">
+            <div fxLayout="column" fxLayoutAlign="start stretch">
+
+                <div fxLayout="row" fxLayoutAlign="start center">
+
+                    <div fxFlex="50">
+                        <label>Selecionar o grupo da situação especial por: </label>
+                        <mat-radio-group [(ngModel)]="tipoConsultaGrupo" formControlName="opcaoGrupo">
+                            <mat-radio-button [value]="true" class="ml-4 mr-4" [checked]="tipoConsultaGrupo">Código</mat-radio-button>
+                            <mat-radio-button [value]="false" class="ml-4 mr-4" [checked]="!tipoConsultaGrupo">Nome</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <mat-form-field appearance="outline" fxFlex="50" class="pl-16">
+                        <mat-label>Grupo</mat-label>
+                        <mat-select required *ngIf="tipoConsultaGrupo" formControlName="grupoSelecionado">
+                            <mat-option *ngFor="let item of todosGrupos" [value]="item.id">{{item.id}}</mat-option>
+                        </mat-select>
+                        <mat-select required *ngIf="!tipoConsultaGrupo" formControlName="grupoSelecionado">
+                            <mat-option *ngFor="let item of todosGrupos" [value]="item.id">{{item.descricao}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-raised-button (click)="pesquisar('')"><mat-icon class="mr-8">search</mat-icon>Pesquisar</button>
+                    <button mat-raised-button color="primary" class="ml-16" (click)="incluir()"><mat-icon class="mr-8">add</mat-icon>Incluir</button>
+                </div>
+            </div>
+        </form>
+        <div class="content mt-28">
+            <dynamic-list [title]="grupoSelecionadoTitulo != null ? (grupoSelecionadoTitulo?.id +' - ' + grupoSelecionadoTitulo?.descricao) : ''"
+                          [dataSource]="dataSource"
+                          [modelService]="modelService"
+                          [dynamicComponent]="formComponent"
+                          [dynamicColumns]="impedimentos"
+                          [page]="page"
+                          [id]="'id'"
+                          [showToobar]="true"
+                          [menuActions]="menuActions"
+                          (onReload)="pesquisar($event)"
+                          (onToggleSelectedModel)="onSelectedChangeModels($event)"
+                          (onRedirectSelected)="redirecionaInclusaoPermissaoManual($event)"
+                          (onExtraModalClicked)="openModalExcluirSituacaoEspecial($event)"
+                          (onSelectedChangeModels)="onSelectedChangeModels($event, false)">
+            </dynamic-list>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,668 @@
+@import 'src/core/scss/app';
+.fontTextoTopo {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    color: black;
+}
+:host {
+
+    #report {
+
+        &.modern {
+            padding: 0;
+
+            .report-container {
+                padding: 20px;
+
+                .card {
+                    /*width: 1020px;
+                    min-width: 1020px;
+                    max-width: 1020px;*/
+                    padding: 88px;
+                    overflow: hidden;
+                    background: #FFFFFF;
+                    @include mat-elevation(7);
+
+                    .header {
+
+                        .ids {
+                            line-height: 22px;
+                            color: rgba(0, 0, 0, 0.54);
+
+                            .detail {
+                                width: 400px;
+                            }
+
+                            .seller {
+                                margin-bottom: 18px;
+
+                                .logo {
+                                    width: 156px;
+                                }
+                            }
+
+                            .client {
+
+                                .label {
+                                    width: 156px;
+                                    font-size: 24px;
+                                    font-weight: 300;
+                                }
+                            }
+
+                            .divider {
+                                width: 1px;
+                                margin: 0 48px;
+                                background-color: rgba(0, 0, 0, 0.12);
+                                height: 144px;
+                            }
+                        }
+
+                        .summary {
+                            font-size: 15px;
+
+                            .label {
+                                color: rgba(0, 0, 0, 0.54);
+                                text-align: right;
+                                padding-right: 16px;
+                            }
+
+                            .value {
+                                color: rgba(0, 0, 0, 1);
+                            }
+
+                            .code {
+                                font-size: 35px;
+                                font-weight: 300;
+
+                                td {
+                                    padding-bottom: 32px;
+                                }
+                            }
+                        }
+                    }
+
+                    .content {
+
+                        font-size: 25px;
+
+                        .report-table {
+                            margin-top: 96px;
+                            font-size: 15px;
+
+                            .title {
+                                font-size: 17px;
+                            }
+
+                            .detail {
+                                margin-top: 8px;
+                                font-size: 12px;
+                                color: rgba(0, 0, 0, 0.54);
+                                max-width: 360px;
+                            }
+                        }
+
+                        .report-table-footer {
+                            margin: 32px 0 96px 0;
+
+                            tr {
+
+                                td {
+                                    text-align: right;
+                                    font-size: 17px;
+                                    font-weight: 500;
+                                    color: rgba(0, 0, 0, 0.54);
+                                    border-bottom: none;
+                                    padding: 8px 8px;
+
+                                    &:first-child {
+                                        text-align: left;
+                                    }
+                                }
+
+                                &.discount {
+
+                                    td {
+                                        padding-bottom: 32px;
+                                    }
+                                }
+
+                                &.total {
+
+                                    td {
+                                        padding: 32px 8px;
+                                        border-top: 1px solid rgba(0, 0, 0, 0.12);
+                                        font-size: 35px;
+                                        font-weight: 300;
+                                        color: rgba(0, 0, 0, 1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .footer {
+
+                        .note {
+                            font-size: 15px;
+                            font-weight: 500;
+                            margin-bottom: 24px;
+                        }
+                        // IE10 fix
+                        .logo, .small-note {
+                            -ms-flex: 0 1 auto;
+                        }
+
+                        .logo {
+                            width: 32px;
+                            min-width: 32px;
+                            margin-right: 24px;
+                        }
+
+                        .small-note {
+                            font-size: 12px;
+                            font-weight: 500;
+                            color: rgba(0, 0, 0, 0.54);
+                            line-height: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /* PRINT STYLES */
+    @media print {
+        /* report Specific Styles */
+        #report {
+
+            &.modern {
+
+                .report-container {
+                    padding: 0;
+
+                    .card {
+                        width: 100% !important;
+                        min-width: 0 !important;
+                        background: none !important;
+                        padding: 0 !important;
+                        box-shadow: none !important;
+
+                        .header {
+
+                            .ids {
+
+                                .detail {
+                                    width: 120pt;
+                                }
+
+                                .seller {
+                                    margin-bottom: 8pt;
+
+                                    .logo {
+                                        width: 60pt;
+                                    }
+                                }
+
+                                .client {
+
+                                    .label {
+                                        width: 60pt;
+                                        font-size: 16pt;
+                                    }
+                                }
+
+                                .divider {
+                                    margin: 0 12pt;
+                                    height: 100pt;
+                                }
+                            }
+
+                            .summary {
+                                font-size: 10pt;
+
+                                .code {
+                                    font-size: 18pt;
+
+                                    td {
+                                        padding-bottom: 10pt;
+                                    }
+                                }
+                            }
+                        }
+
+                        .content {
+
+                            .report-table {
+                                margin-top: 16pt;
+
+                                thead {
+
+                                    tr {
+
+                                        th {
+                                            font-size: 10pt;
+                                            max-width: 60pt;
+
+                                            &:first-child {
+                                                padding-left: 0;
+                                            }
+
+                                            &:last-child {
+                                                padding-right: 0;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                tbody {
+
+                                    tr {
+
+                                        td {
+
+                                            &:first-child {
+                                                padding-left: 0;
+                                            }
+
+                                            &:last-child {
+                                                padding-right: 0;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .title {
+                                    font-size: 10pt;
+                                }
+
+                                .detail {
+                                    margin-top: 4pt;
+                                    font-size: 9pt;
+                                    max-width: none;
+                                }
+                            }
+
+                            .report-table-footer {
+                                margin: 16pt 0;
+
+                                tr {
+
+                                    td {
+                                        font-size: 13pt;
+                                        padding: 4pt 4pt;
+
+                                        &:first-child {
+                                            text-align: left;
+                                            padding-left: 0;
+                                        }
+
+                                        &:last-child {
+                                            padding-right: 0;
+                                        }
+                                    }
+
+                                    &.discount {
+
+                                        td {
+                                            padding-bottom: 16pt;
+                                        }
+                                    }
+
+                                    &.total {
+
+                                        td {
+                                            padding: 16pt 4pt 0 4pt;
+                                            font-size: 16pt;
+
+                                            &:first-child {
+                                                padding-left: 0;
+                                            }
+
+                                            &:last-child {
+                                                padding-right: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .footer {
+
+                            .note {
+                                font-size: 10pt;
+                                margin-bottom: 8pt;
+                            }
+
+                            .logo {
+                                font-size: 14pt;
+                                margin-right: 8pt;
+                            }
+
+                            .small-note {
+                                font-size: 8pt;
+                                line-height: normal;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.my-full-screen-dialog .mat-dialog-container {
+  max-width: none;
+  width: 100vw;
+  height: 50vh;
+}
+
+.boleto-content {
+    width: 100%;
+    align-items: center !important;
+}
+
+.logo-bank{
+  width: 150px;
+}
+
+.codigoBancoComDv{
+  width: 58px;
+}
+
+.linhaDigitavel{
+  width: 453px;
+}
+
+.cedente{
+  width: 268px;
+}
+
+.agenciaCodigo{
+  width: 156px;
+}
+
+.especie{
+  width: 34px;
+}
+
+.quantidade{
+  width: 53px;
+}
+
+.nossoNumero{
+  width: 120px;
+}
+
+.numeroDocumento{
+  width: 200px;
+}
+
+.cpfCnpj{
+  width: 130px;
+}
+.dataVencimento{
+  width: 123px;
+}
+
+.valorBoleto{
+  width: 180px;
+}
+
+
+.descontoAbatimento{
+  width: 128px;
+}
+
+.outrasDeducoes{
+  width: 108px;
+}
+
+.multaMora{
+  width: 108px;
+}
+
+.outrosAcrescimos{
+  width: 100px;
+}
+
+.valorCobrado{
+  width: 180px;
+}
+
+
+.sacado{
+  width: 159px;
+}
+
+.demonstrativo{
+  width: 564px;
+  min-height: 100px;
+}
+
+
+.autenticacao{
+  width: 88px;
+  min-height: 100px;
+}
+
+.pontilhada{
+  width: 666px;
+}
+
+.localPagamento{
+  width: 475px;
+}
+
+.dataVencimento-b{
+  width: 180px;
+}
+
+.cedente-b{
+  width: 475px;
+}
+
+.agenciaCodigo-b{
+  width: 180px;
+}
+
+.dataDocumento{
+  width: 113px;
+}
+
+.numeroDocumento-b{
+  width: 133px;
+}
+
+.especieDocumento{
+  width: 58px;
+}
+
+.aceite{
+  width: 34px;
+}
+
+.dataProcessamento{
+  width: 101px;
+}
+
+.nossoNumero-b{
+  width: 180px;
+}
+
+.usoBanco{
+  width: 113px;
+}
+
+.carteira{
+  width: 88px;
+}
+
+.especie-b{
+  width: 36px;
+}
+
+.quantidade-b{
+  width: 101px;
+}
+
+.valorUnitario{
+  width: 100px;
+}
+
+.valorBoleto-b{
+  width: 180px;
+}
+
+.instrucoes{
+  width: 465px;
+}
+
+.descontoAbatimento-b {
+    width: 54%;
+    margin-left: 20px !important;
+}
+
+
+
+
+
+
+
+.campo {  font: bold 10px Arial; color: black}
+.cp {  font: bold 10px Arial; color: black}
+.ti {  font: 9px Arial, Helvetica, sans-serif}
+.ld { font: bold 15px Arial; color: #000000}
+.ct { font: 9px "Arial Narrow"; color: #000033; }
+.cn { font: 9px Arial; color: black }
+.bc { font: bold 20px Arial; color: #000000 }
+.ld2 { font: bold 12px Arial; color: #000000 }
+
+.h-1{
+  height: 1px !important;
+}
+
+.h-2{
+  height: 2px !important;
+}
+
+.h-12{
+  height: 12px !important;
+}
+
+.h-13{
+  height: 13px !important;
+}
+
+.h-22{
+  height: 56px !important;
+}
+
+.h-34{
+  height: 60px !important;
+}
+
+
+.h-40{
+  height: 40px !important;
+}
+
+.h-50{
+  height: 50px !important;
+}
+
+.mh-100{
+  min-height: 100px;
+}
+.lineZero {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    height: 60px;
+}
+.lineOne {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 60px;
+}
+.lineTwo {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 60px;
+}
+.lineThree {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 60px;
+}
+.lineFour {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 60px;
+}
+.lineFive {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 70px;
+}
+.lineSix {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 60px;
+}
+.lineSeven {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 60px;
+}
+.lineEight {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 60px;
+}
+.lineNine {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 60px;
+}
+.lineTen {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 300px;
+}
+.lineEleven {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 60px;
+}
+.lineBarcode {
+    width: 1024px;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px !important;
+    height: 80px;
+}

@@ -1,0 +1,30 @@
+
+<div [formGroup]="formGroup" >
+    <div class="mb-24 control-group h-44" fxLayout="row" fxLayoutAlign="start" >
+        <label class="control-label"> <span class="obrigatorio" *ngIf="required">*</span>Contratos: </label>
+        <span class="btn btn-primary" (click)="addItens()">+</span>
+    </div>
+
+    <div formArrayName="{{itemControlAlias}}">
+        <div class="mb-24 control-group h-44" fxLSubFormListayout="row" fxLayoutAlign="start"
+             *ngFor="let item of formArrayItens.controls ; index as i "  [formGroupName]="i">
+            <label class="control-label"><span class="obrigatorio" *ngIf="required">*</span>Nº do Contrato: </label>
+            <mat-form-field>
+                <input type="text" fxLayoutAlign="end start" formControlName="numeroContrato"
+                       matInput [readonly]="state ==='view'"
+                       maxlength="100">
+            </mat-form-field>
+            <label class="control-label"><span class="obrigatorio" *ngIf="required">*</span>CNPJ: </label>
+            <mat-form-field>
+                <input type="text" fxLayoutAlign="end start" formControlName="cnpj"
+                       matInput [readonly]="state ==='view'"
+                       maxlength="100">
+            </mat-form-field>
+            <span class="btn btn-danger" (click)="removeItem(i)">x</span>
+        </div>
+    </div>
+</div>
+
+<!--<br>TESTE=> formGroup.valid: {{formGroup.valid}} <br>
+<pre>{{getFormValidationErrors(formGroup) | json}}</pre>
+<pre>{{formGroup?.value | json}}</pre>&ndash;&gt;-->

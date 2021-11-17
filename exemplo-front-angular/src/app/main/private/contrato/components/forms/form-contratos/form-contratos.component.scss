@@ -1,0 +1,18 @@
+.contrato-header-image {
+    background-image: url(~/assets/images/caixa/edit-user-128.jpg);
+    background-size: cover;
+}
+
+.example-action-buttons {
+    padding-bottom: 20px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}

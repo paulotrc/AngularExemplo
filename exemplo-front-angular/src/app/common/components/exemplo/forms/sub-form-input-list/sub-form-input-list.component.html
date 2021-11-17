@@ -1,0 +1,43 @@
+<form [formGroup]="formGroup">
+    <mat-accordion class="cliente-headers-align" multi style="min-width: 100%;">
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{title}}
+                </mat-panel-title>
+                <mat-panel-description fxLayoutAlign="end">
+                    <mat-icon>{{icon}}</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <button *ngIf="state !=='view'" mat-icon-button (click)="addItens()" aria-label="add item">
+                Adicionar {{label}}
+                <mat-icon class="material-icons">add_circle</mat-icon>
+            </button>
+            <div [formArrayName]="itemControlAlias">    
+                <div *ngFor="let item of formArrayItens.controls; index as i" >
+                    <mat-form-field fxFlex="100" *ngIf="type ==='email'" appearance="{{appearanceField}}">
+                        <mat-label>
+                            <span *ngIf="required">*</span>{{label}}
+                        </mat-label>
+                        <input type="{{type}}" fxLayoutAlign="start start" [formControlName]="i"
+                               [readonly]="state ==='view'"
+                               matInput
+                               maxlength="{{maxlength}}">
+                    </mat-form-field>
+                    <mat-form-field fxFlex="100" *ngIf="type !=='email'" appearance="{{appearanceField}}">
+                        <mat-label>
+                            <span *ngIf="required">*</span>{{label}}
+                        </mat-label>
+                        <input type="{{type}}" fxLayoutAlign="start start" [formControlName]="i"
+                               [readonly]="state ==='view'"
+                               matInput
+                               maxlength="{{maxlength}}" [mask]="mask">
+                    </mat-form-field>
+                    <button *ngIf="state !=='view'" mat-icon-button (click)="removeItem(i)" aria-label="delete selected" class="mt-4">
+                        <mat-icon class="material-icons">delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</form>

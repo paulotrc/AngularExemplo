@@ -1,0 +1,6 @@
+<ul class="breadcrumb custom-breadcrumb" *ngIf="headerBreadCrumbV1Model.show">
+  <li *ngFor="let link of headerBreadCrumbV1Model.preparedLinks; let i = index" [ngClass]="{'active': headerBreadCrumbV1Model.preparedLinks.length-1 === i}">
+    <span>{{link}}</span>
+    <span class="divider" *ngIf="headerBreadCrumbV1Model.preparedLinks.length-1 !== i"> &gt;</span>
+  </li>
+</ul>

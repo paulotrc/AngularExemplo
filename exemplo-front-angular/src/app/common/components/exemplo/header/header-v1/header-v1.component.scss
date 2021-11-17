@@ -1,0 +1,20 @@
+.header {
+  border: 0 !important;
+}
+
+.header .left {
+  padding-top: 0.5em !important;
+}
+
+.header .right {
+  padding-top: 0.5em !important;
+  text-align: right !important;
+  position: fixed !important;
+  top: 50px !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+}
+
+.popover {
+  z-index: 1000 !important;
+}

@@ -1,0 +1,157 @@
+<mat-dialog-content>
+    <div id="report" class="modern page-layout blank" fxLayout="column" fxLayoutAlign="end center">
+        <div class="report-container">
+
+            <div id="invoice" class="modern page-layout blank" fxLayout="row">
+
+                <div class="invoice-container">
+                    <!-- model.report -->
+                    <div class="card" id="resumo">
+
+                        <div class="header" fxLayout="row" fxLayoutAlign="space-between start">
+                            <div class="ids" fxLayout="column">
+                                <div fxLayout="row" class="seller" fxLayoutAlign="start center">
+                                    <div class="logo">
+                                        <img src="../../../../../../../assets/images/caixa/caixa-logo-x.png">
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="detail">
+                                        <div class="title">CAIXA ECONÔMICA FEDERAL </div>
+                                        <div class="address">
+                                            SBS QD 04 LOTE 3/4
+                                        </div>
+                                        <div class="phone dontPrint">
+                                            <span>SAC CAIXA:</span>
+                                            0800 726 0101 (informações, reclamações, sugestões e elogios)<br />
+                                            Para pessoas com deficiência auditiva: 0800 726 2492
+                                        </div>
+                                        <div class="email dontPrint">
+                                            <span>Ouvidoria:</span>
+                                            0800 725 7474 (reclamações não solucionadas e denúncias)
+                                        </div>
+                                        <div class="website dontPrint">
+                                            <span>Web:</span>
+                                            http://www.caixa.gov.br/Paginas/home-caixa.aspx
+                                        </div>
+                                    </div>
+                                </div>
+                                <div fxLayout="row" class="client" fxLayoutAlign="start center">
+                                    <div class="label" fxLayout="row" fxLayoutAlign="end center">
+                                        <div>CLIENTE</div>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="detail">
+                                        <div class="title">{{storage.retrieve('currentClient').nome}}</div>
+                                        <div class="address">
+                                            {{storage.retrieve('currentClient').cpfCnpj | cpfCnpjMask}}
+                                        </div>
+                                        <div class="phone">
+                                            <span>Telefone: {{dadosCliente.telefoneAtual}}</span>
+                                        </div>
+                                        <div class="email">
+                                            <span>Email: {{dadosCliente.emailAtual}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table class="summary">
+                                <tr class="code">
+                                    <td class="label">Atendimento.</td>
+                                    <td class="value">{{model.idAtendimento}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="label">Data Vencimento</td>
+                                    <td class="value">{{model.dadosPagamento.dataVencimento | date:'dd/MM/yyyy'}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="label">Data Emissao</td>
+                                    <td class="value">{{currentDate | date:'dd/MM/yyyy'}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="label">Valor Pagamento</td>
+                                    <td class="value">{{model.dadosPagamento.valorDoPagamento | realCurrency}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="content">
+                            <table class="simple model.report-table">
+                                <thead>
+                                    <tr>
+                                        <th>Contrato</th>
+                                        <th>Operação / Produto</th>
+                                        <th class="text-right">Desconto</th>
+                                        <th class="text-right">Valor Negociado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of model.listaDeContrato">
+                                        <td>
+                                            <div class="title">#{{item.numeroDoContrato.split('.').join('').replace('-','')}}</div>
+                                        </td>
+                                        <td>
+                                            {{item.produto.codigo}} /  {{item.produto.descricao}}
+                                        </td>
+                                        <td class="text-right">
+                                            {{(item.condicoesOferecidas.desconto | currency:'BRL':true:'2.2-2').replace('R$','').replace('.',',')}} %
+                                        </td>
+                                        <td class="text-right">
+                                            {{item.condicoesOferecidas.valorNegociado | realCurrency}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="simple model.report-table-footer">
+                                <tbody>
+                                    <tr class="subtotal">
+                                        <td>VENCIMENTO</td>
+                                        <td>{{model.dadosPagamento.dataVencimento | date:'dd/MM/yyyy'}}</td>
+                                    </tr>
+                                    <tr class="tax">
+                                        <td>JUROS</td>
+                                        <td>{{model.dadosPagamento.juros}}</td>
+                                    </tr>
+                                    <tr class="total">
+                                        <td>TOTAL</td>
+                                        <td>{{model.dadosPagamento.valorDoPagamento | realCurrency}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="footer  mt-16">
+                            <div class="note">Em caso de dúvidas, entre em contato com a CAIXA através do telefone 0800 726 8068, opção 8.</div>
+                            <div fxLayout="column" fxLayoutAlign="space-around end">
+
+                                <div div fxLayout="row" fxLayoutAlign="start start">
+                                    <div class="logo">
+                                        <img src="../../../../../../../assets/images/caixa/caixa-logo-x.png">
+                                    </div>
+                                    <div class="small-note">
+                                        SAC CAIXA: 0800 726 0101 (informações, reclamações, sugestões e elogios)
+                                        Para pessoas com deficiência auditiva: 0800 726 2492
+                                        Ouvidoria: 0800 725 7474 (reclamações não solucionadas e denúncias)
+                                        CAIXA ECONÔMICA FEDERAL - SBS QD 04 LOTE 3/4
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / model.report -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" (click)="convetToPDF(model.idAtendimento)" class="dontPrint"><mat-icon>picture_as_pdf</mat-icon>&nbsp;&nbsp;Gerar PDF</button>
+    <button mat-raised-button color="warn"  [mat-dialog-close]="undefined"><mat-icon>close</mat-icon>&nbsp;&nbsp;Fechar</button>
+</mat-dialog-actions>
+
+

@@ -1,0 +1,49 @@
+
+<mat-card fxLayout="column" class="mt-28 mr-28 ml-28 mb-28">
+    <mat-card-header class="mt-20 ml-16">
+        <div mat-card-avatar class="contrato-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title>Selecionar Contrato</mat-card-title>
+        <mat-card-subtitle>
+            {{storage.retrieve('currentClient').nome}} | {{storage.retrieve('currentClient').cpfCnpj | cpfCnpjMask }}
+        </mat-card-subtitle><br />
+    </mat-card-header>
+    <siiga-debugger [data]="
+    [
+        { label: 'model', value: model },
+        { label: 'listModels', value:  listModels },
+        { label: 'selectedModels', value: selectedModels },
+        { label: 'extraParams', value: extraParams },
+        { label: 'extraParamsFromParent', value: extraParamsFromParent }
+    ]">
+    </siiga-debugger>
+
+    <mat-card-content class="p-16">
+                    <dynamic-list [title]="'Contratos'"
+                                  [dataSource]="dataSource"
+                                  [modelService]="modelService"
+                                  [dynamicColumns]="dynamicColumns"
+                                  [dynamicComponent]="formComponent"
+                                  [page]="page"
+                                  [id]="'idContrato'"
+                                  [label]="'numeroDoContrato'"
+                                  [showToobar]="false"
+                                  [menuActions]="menuActions"
+                                  (onReload)="updateDataProvider($event)"
+                                  (onSelectedChangeModels)="onSelectedChangeModels($event, false)"
+                                  >
+                    </dynamic-list>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="mr-16 mb-16">
+        <button id="btnVoltar"
+                mat-raised-button
+                (click)="router.navigate(['clientes/dados-cadastrais'])"
+                class="btn m-4" color="primary">
+            <mat-icon>arrow_back</mat-icon>&nbsp;&nbsp;Voltar
+        </button>
+        <button [disabled]="selectedModels.length <= 0" mat-raised-button color="primary"
+                (click)="sendDynamicDataOperation(objConfigRenegociacao(this.extraParamsFromParent));">
+            <mat-icon>monetization_on</mat-icon>&nbsp;&nbsp;Renegociar
+        </button>
+    </mat-card-actions>
+</mat-card>
+

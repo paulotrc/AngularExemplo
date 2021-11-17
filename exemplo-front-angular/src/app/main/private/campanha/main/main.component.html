@@ -1,0 +1,22 @@
+<div id="main-campanha" class="page-layout simple  w-100-p inner-scroll">
+
+    <!-- HEADER -->
+    <section *ngIf="!formLoaded" fxLayout="column wrap" fxLayoutGap="5px" fxLayoutAlign="center center">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </section>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+        <!-- CENTER -->
+        <div class="center">
+            <!-- CONTENT -->
+            <div class="controls">
+                <template #loadComponent></template>
+            </div>
+            <!-- / CONTENT -->
+        </div>
+        <!-- / CENTER -->
+    </div>
+    <!-- / CONTENT-->
+</div>

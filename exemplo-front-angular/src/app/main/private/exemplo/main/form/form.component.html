@@ -1,0 +1,103 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="onCloseModal.next('')" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" corePerfectScrollbar>
+
+        <form [formGroup]="formGroup">
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+
+                <mat-form-field fxFlex >
+                    <input id="ano" name="ano" formControlName="ano" placeholder="Ano" matInput [readonly]="state ==='view'">
+                    <!--<control-messages [control]="formGroup.get('nome')"></control-messages>-->
+                </mat-form-field>
+
+
+                <mat-form-field fxFlex >
+                    <input id="titulo" name="titulo" formControlName="titulo" placeholder="Titulo" matInput [readonly]="state ==='view'">
+                    <!--<control-messages [control]="formGroup.get('nome')"></control-messages>-->
+                </mat-form-field>
+
+                <mat-form-field fxFlex fxFlex="30">
+                    <input id="codigoReceita" name="codigoReceita" formControlName="codigoReceita" placeholder="Código Receita" matInput [readonly]="state ==='view'">
+                </mat-form-field>
+            </div>
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+                <mat-form-field fxFlex >
+                    <textarea id="objetivo" name="objetivo" formControlName="objetivo" placeholder="Objetivo" matInput [readonly]="state ==='view'"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+                <mat-form-field fxFlex >
+                    <input id="cargaHoraria" name="cargaHoraria" formControlName="cargaHoraria" placeholder="Carga Horária" matInput [readonly]="state ==='view'">
+                </mat-form-field>
+                <mat-form-field fxFlex >
+                    <input id="valor" name="valor" formControlName="valor" placeholder="Valor" matInput [readonly]="state ==='view'">
+                </mat-form-field>
+                <mat-form-field fxFlex >
+                    <input id="modalidade" name="modalidade" formControlName="modalidade" placeholder="Modalidade" matInput [readonly]="state ==='view'">
+                </mat-form-field>
+                <mat-form-field fxFlex >
+                    <input id="status" name="status" formControlName="status" placeholder="Status" matInput [readonly]="state ==='view'">
+                </mat-form-field>
+                <mat-form-field fxFlex >
+                    <input id="liberarComprarVoucher" name="liberarComprarVoucher" formControlName="liberarComprarVoucher" placeholder="Liberar Comprar de Voucher" matInput [readonly]="state ==='view'">
+                </mat-form-field>
+            </div>
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+                <mat-form-field fxFlex >
+                    <textarea id="preRequisito" name="preRequisito" formControlName="preRequisito" placeholder="Pré-Requisito" matInput [readonly]="state ==='view'"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+                <mat-form-field fxFlex >
+                    <input id="publicoAlvo" name="publicoAlvo" formControlName="publicoAlvo" placeholder="Público Alvo" matInput [readonly]="state ==='view'">
+                </mat-form-field>
+            </div>
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+                <mat-form-field fxFlex >
+                    <textarea id="documentosObrigatorios" name="documentosObrigatorios" formControlName="documentosObrigatorios" placeholder="Documentos Obrigatórios" matInput [readonly]="state ==='view'"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+                <mat-form-field fxFlex >
+                    <textarea id="resultadoEsperado" name="resultadoEsperado" formControlName="resultadoEsperado" placeholder="Resultados Esperados" matInput [readonly]="state ==='view'"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" >
+                <mat-form-field fxFlex >
+                    <textarea id="conteudoProgramatico" name="conteudoProgramatico" formControlName="conteudoProgramatico" placeholder="Conteudo Programático" matInput [readonly]="state ==='view'"></textarea>
+                </mat-form-field>
+            </div>
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+
+      <button *ngIf="state !=='view'"
+              mat-raised-button
+              (click)="onModelDataOperation.next({action:'saveModel', model:formGroup.value})"
+              class="save-button mat-accent"
+              [disabled]="formGroup.invalid"
+              aria-label="SAVE">
+        SALVAR
+      </button>
+
+
+      <button *ngIf="state ==='edit'"
+              mat-icon-button
+              (click)="onModelDataOperation.next({action:'delete', model:formGroup.value})"
+              aria-label="Delete"
+              matTooltip="Delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+    </div>
+</div>

@@ -1,0 +1,120 @@
+<!-- SIDE PANEL -->
+
+<ng-container *ngIf="!coreConfig.layout.sidepanel.hidden && coreConfig.layout.sidepanel.position === 'left'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<div id="main">
+    <!-- TOOLBAR: Above fixed -->
+    <ng-container *ngIf="coreConfig.layout.toolbar.position === 'above-fixed'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above fixed -->
+
+    <div id="container-1" class="container" corePerfectScrollbar
+         [corePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+        <!-- TOOLBAR: Above static -->
+        <ng-container *ngIf="coreConfig.layout.toolbar.position === 'above-static'">
+            <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+        </ng-container>
+        <!-- / TOOLBAR: Above static -->
+
+        <div id="container-2" class="container">
+
+            <!-- NAVBAR: Left -->
+            <ng-container *ngIf="coreConfig.layout.navbar.position === 'left'">
+                <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+            </ng-container>
+            <!-- / NAVBAR: Left -->
+
+            <!-- CONTENT -->
+            <content
+                [ngClass]="{'ml-32':coreConfig.layout.navbar.position === 'left', 'mr-32':coreConfig.layout.navbar.position === 'right'}">
+
+            </content>
+            <!-- / CONTENT -->
+            <!-- NAVBAR: Right -->
+            <ng-container *ngIf="coreConfig.layout.navbar.position === 'right'">
+                <ng-container *ngTemplateOutlet="rightNavbar"></ng-container>
+            </ng-container>
+            <!-- / NAVBAR: Right -->
+
+        </div>
+
+        <!-- FOOTER: Above static -->
+        <ng-container *ngIf="coreConfig.layout.footer.position === 'above-static'">
+            <ng-container *ngTemplateOutlet="footer"></ng-container>
+        </ng-container>
+        <!-- FOOTER: Above static -->
+
+    </div>
+
+    <!-- FOOTER: Above fixed -->
+    <ng-container *ngIf="coreConfig.layout.footer.position === 'above-fixed'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+    </ng-container>
+    <!-- FOOTER: Above fixed -->
+
+</div>
+
+<!-- SIDE PANEL -->
+<alert></alert>
+<ng-container *ngIf="!coreConfig.layout.sidepanel.hidden && coreConfig.layout.sidepanel.position === 'right'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<!-- QUICK PANEL -->
+<core-sidebar name="quickPanel" position="right" class="quick-panel">
+    <quick-panel></quick-panel>
+</core-sidebar>
+<!-- / QUICK PANEL -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+  <core-toolbar *ngIf="!coreConfig.layout.toolbar.hidden" class="dontPrint"
+           [ngClass]="coreConfig.layout.toolbar.customBackgroundColor === true ? coreConfig.layout.toolbar.position + ' ' + coreConfig.layout.toolbar.background : coreConfig.layout.toolbar.position">
+  </core-toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+    <footer *ngIf="!coreConfig.layout.footer.hidden"
+            [ngClass]="coreConfig.layout.footer.customBackgroundColor === true ? coreConfig.layout.footer.position + ' ' + coreConfig.layout.footer.background : coreConfig.layout.footer.position">
+    </footer>
+</ng-template>
+<!-- / FOOTER -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar >
+    <core-sidebar name="navbar" class="navbar-core-sidebar"
+                  [folded]="coreConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!coreConfig.layout.navbar.hidden">
+        <navbar [variant]="coreConfig.layout.navbar.variant" class="left-navbar"></navbar>
+    </core-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->
+
+<!-- RIGHT NAVBAR -->
+<ng-template #rightNavbar>
+    <core-sidebar name="navbar" position="right" class="navbar-core-sidebar"
+                  [folded]="coreConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!coreConfig.layout.navbar.hidden">
+      <span id="leftNavbarContainer" class="left-navbar"></span>
+    </core-sidebar>
+</ng-template>
+<!-- / RIGHT NAVBAR -->
+

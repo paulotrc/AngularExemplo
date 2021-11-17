@@ -1,0 +1,11 @@
+@mixin core-search-bar-theme($theme) {
+
+    $background: map-get($theme, background);
+
+    .core-search-bar {
+
+        &.expanded {
+            background-color: map-get($background, background);
+        }
+    }
+}

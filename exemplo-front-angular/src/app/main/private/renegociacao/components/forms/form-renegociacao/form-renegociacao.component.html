@@ -1,0 +1,232 @@
+
+<siiga-debugger [data]="[
+                {label:'formGroup', value:formGroup.value},
+                {label:'model', value:model}]">
+</siiga-debugger>
+<mat-card fxLayout="column" class="mt-28 mr-28 ml-28 mb-28">
+    <mat-card-header class="mt-20 ml-16">
+        <div mat-card-avatar class="renegociacao-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title *ngIf="state !=='view'">Renegociar</mat-card-title>
+        <mat-card-title *ngIf="state ==='view'">Detalhar Dados Contrato Renegociado</mat-card-title>
+        <mat-card-subtitle>
+            {{storage.retrieve('currentClient')?.nome}} | {{storage.retrieve('currentClient')?.cpfCnpj | cpfCnpjMask}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="p-16">
+        <form [formGroup]="formGroup">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-accordion class="renegociacao-headers-align" multi style="width: 100%;">
+                    <sub-form-contratos-renegociacao formControlName="contratosFormFields"
+                                                     [title]="''"
+                                                     [currentState]="state"
+                                                     [model]="model?.listaDeContrato"
+                                                     [itemControlAlias]="'contratos'"
+                                                     (onChangeValorNegociado)="updateTotalValorNegociado($event)"
+                                                     (onValidaCampos)="updateValidaBotoes($event)">
+                    </sub-form-contratos-renegociacao>
+
+
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Dados Pagamento
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Total
+                                <mat-icon>payment</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <mat-form-field appearance="fill" fxFlex="33"
+                                        class="pl-0">
+                            <mat-label>Valor</mat-label>
+                            <input matInput formControlName="valorDoPagamento" currencyMask [options]="{ prefix: 'R$ '}" required="true"
+                                   readonly>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill"
+                                        class="pl-16">
+                            <mat-label>Juros</mat-label>
+                            <input matInput formControlName="juros" readonly>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" fxFlex="33" class="pl-16">
+                            <mat-label>Vencimento</mat-label>
+                            <input matInput readonly="this.state !=='view'" [matDatepicker]="myDatepicker" formControlName="dataVencimento" value="{{model?.dadosPagamento?.dataVencimento}}"
+                            [min]="dataMinima" [max]="dataMaxima" [required]="true" (dateChange)="updateValidaBotoes(undefined)">
+                            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #myDatepicker></mat-datepicker>
+                        </mat-form-field>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="mr-16 mb-16">
+        <button id="btnVoltar"
+                mat-raised-button
+                (click)="router.navigate(['contratos/search-contratos'])"
+                class="btn m-4" color="primary">
+            <mat-icon>arrow_back</mat-icon>&nbsp;&nbsp;Voltar
+        </button>
+        <button mat-raised-button *ngIf="state !=='view'"
+                (click)="enviaDados(objConfigSimulacao(this.extraParamsFromParent));">
+            <mat-icon>save</mat-icon>&nbsp;&nbsp;Salvar Simulação
+        </button>
+        <button mat-raised-button color="primary" *ngIf="state !=='view'"
+                (click)="enviaDados(objConfigSimulacaoRenegociacao(this.extraParamsFromParent));">
+            <mat-icon>monetization_on</mat-icon>&nbsp;&nbsp;Pagamento
+        </button>
+    </mat-card-actions>
+</mat-card>
+
+<!--
+<mat-card fxLayout="column" class="mt-28 mr-28 ml-28 mb-28">
+    <mat-card-header class="mt-20 ml-16">
+        <div mat-card-avatar class="renegociacao-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title *ngIf="state !=='view'">Renegociar</mat-card-title>
+        <mat-card-title *ngIf="state ==='view'">Detalhar Dados Contrato Renegociado</mat-card-title>
+        <mat-card-subtitle *ngIf="state !=='view'">
+            {{storage.retrieve('currentClient')?.nome}} | {{storage.retrieve('currentClient')?.cpfCnpj}}
+        </mat-card-subtitle><br />
+    </mat-card-header>
+    <form [formGroup]="formGroup">
+
+        <mat-card-content class="p-16">
+            <div fxLayout="row" fxLayoutAlign="start stretch"  fxFlex="100">
+                <button mat-raised-button color="primary" *ngIf="state !=='view'"
+                        (click)="redirect()">
+                    <mat-icon>edit</mat-icon>&nbsp;&nbsp;
+                    Dados Cadastrais
+                </button>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start stretch" *ngIf="state ==='view'">
+                <mat-accordion class="cliente-headers-align" multi style="min-width: 100%;">
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Dados Cliente
+                            </mat-panel-title>
+                            <mat-panel-description fxLayoutAlign="end">
+                                <mat-icon>account_circle</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <div fxLayout="row" fxLayoutAlign="none">
+                            <mat-form-field appearance="fill" fxFlex="75"
+                                            class="pl-0">
+                                <mat-label>Nome</mat-label>
+                                <input matInput
+                                       value="{{dadosCliente.nome}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-8">
+                                <mat-label>CPF</mat-label>
+                                <input matInput
+                                       value="{{dadosCliente.cpfCnpj}}" readonly>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="none">
+                            <mat-form-field appearance="fill" fxFlex="10"
+                                            class="pl-0">
+                                <mat-label>UF</mat-label>
+                                <input matInput
+                                       value="{{dadosCliente.ufAtual}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="45"
+                                            class="pl-8">
+                                <mat-label>Bairro</mat-label>
+                                <input matInput
+                                       value="{{dadosCliente.bairroAtual}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="45"
+                                            class="pl-8">
+                                <mat-label>Cidade</mat-label>
+                                <input matInput
+                                       value="{{dadosCliente.cidadeAtual}}" readonly>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="none">
+                            <mat-form-field appearance="fill" fxFlex="70"
+                                            class="pl-0">
+                                <mat-label>E-mail</mat-label>
+                                <input matInput
+                                       value="{{dadosCliente.emailAtual}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="30"
+                                            class="pl-8">
+                                <mat-label>Telefone</mat-label>
+                                <input matInput
+                                       value="{{dadosCliente.telefoneAtual}}" readonly>
+                            </mat-form-field>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start stretch">
+
+                <mat-accordion class="renegociacao-headers-align" multi>
+                    <sub-form-contratos-renegociacao formControlName="contratosFormFields"
+                                                     [title]="''"
+                                                     [currentState]="state"
+                                                     [model]="model?.listaDeContrato"
+                                                     [itemControlAlias]="'contratos'"
+                                                     (onChangeValorNegociado)="updateTotalValorNegociado($event)">
+                    </sub-form-contratos-renegociacao>
+
+
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Dados Pagamento
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Total
+                                <mat-icon>payment</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <mat-form-field appearance="fill" fxFlex="33"
+                                        class="pl-0">
+                            <mat-label>Valor</mat-label>
+                            <input matInput formControlName="valorDoPagamento"
+                                   readonly>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill"
+                                        class="pl-16">
+                            <mat-label>Juros</mat-label>
+                            <input matInput formControlName="juros" readonly>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" fxFlex="33" class="pl-16">
+                            <mat-label>Vencimento</mat-label>
+                            <input matInput readonly="this.state !=='view'" [matDatepicker]="myDatepicker" formControlName="dataVencimento" value="{{model?.dadosPagamento?.dataVencimento}}">
+                            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #myDatepicker></mat-datepicker>
+                        </mat-form-field>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="mr-16 mb-16">
+            <button mat-raised-button style="background-color: green;color: white;" *ngIf="state !=='view'"
+                    (click)="sendDynamicDataOperation(objConfigSimulacao(this.extraParamsFromParent));">
+                Salvar Simulação
+            </button>
+            <button mat-raised-button color="primary" *ngIf="state !=='view'"
+                    (click)="sendDynamicDataOperation(objConfigSimulacaoRenegociacao(this.extraParamsFromParent));">
+                Pagamento
+            </button>
+            <button id="btnVoltar" *ngIf="state ==='view'"
+                    mat-raised-button
+                    (click)="router.navigate([''])"
+                    class="btn m-4 btnVoltar">
+                Voltar
+            </button>
+        </mat-card-actions>
+    </form>
+</mat-card>-->

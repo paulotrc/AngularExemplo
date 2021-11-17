@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts",
+    "src/app/common/helpers/fake-apis/renegociacoes/**/*.ts",
+    "src/app/common/helpers/fake-apis/exemplos/**/*.ts",
+    "src/app/common/helpers/fake-apis/samples/**/*.ts",
+    "src/app/common/helpers/fake-apis/atendimentos/**/*.ts",
+    "src/app/common/helpers/fake-apis/contratos/**/*.ts",
+    "src/app/common/helpers/fake-apis/atendimentos/**/*.ts",
+    "src/app/common/helpers/fake-apis/meus-atendimentos/**/*.ts",
+    "src/app/common/helpers/fake-apis/clientes/**/*.ts",
+    "src/app/common/helpers/fake-apis/boletos/**/*.ts",
+    "src/app/common/helpers/fake-apis/authenticate/**/*.ts",
+    "src/app/common/helpers/fake-apis/is-logged/**/*.ts",
+    "src/core/decorators/**/*.ts"
+  ]
+}

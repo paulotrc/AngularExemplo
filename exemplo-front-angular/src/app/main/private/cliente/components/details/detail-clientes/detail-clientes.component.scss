@@ -1,0 +1,27 @@
+@import "src/core/scss/app";
+
+.dados-cadastrais-header-image {
+    background-image: url(~/assets/images/caixa/user-3-128.jpg);
+    background-size: cover;
+}
+
+.cliente-action-buttons {
+    padding-bottom: 20px;
+}
+
+.cliente-headers-align .mat-expansion-panel-header-title,
+.cliente-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.cliente-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invisible{
+    display: block;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}

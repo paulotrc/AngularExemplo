@@ -1,0 +1,93 @@
+<div id="login" class="inner-scroll" fxLayout="row" fxLayoutAlign="start">
+
+    <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
+
+        <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
+            <img id="logo-splash" class="center" src="assets/images/caixa/caixa-logo-x.png">
+        </div>
+
+        <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
+            {{'LOGIN.HELLO' | translate}}
+        </div>
+
+        <div class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
+            {{'LOGIN.DESC' | translate}}
+        </div>
+
+    </div>
+
+    <div id="login-form-wrapper" corePerfectScrollbar
+         [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="login-form">
+
+            <div class="logo" fxHide.gt-xs>
+                <img src="assets/images/caixa/caixa-logo-x-white.png">
+            </div>
+
+            <div class="title">{{'LOGIN.LOGIN_TO_YOUR_ACCOUNT' | translate}}</div>
+
+            <form name="loginForm" [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+
+                <mat-form-field>
+                    <input matInput placeholder="{{'LOGIN.USERNAME' | translate}}" formControlName="username">
+                    <mat-error *ngIf="loginForm.get('username').hasError('required')">
+                        {{'LOGIN.USERNAME_REQUIRED' | translate}}
+                    </mat-error>
+                    <mat-error
+                        *ngIf="!loginForm.get('username').hasError('required') &&
+                                loginForm.get('username').hasError('username')">
+                        {{'LOGIN.USERNAME_INVALID' | translate}}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="{{'LOGIN.PASSWORD' | translate}}" formControlName="password">
+                    <mat-error>
+                        {{'LOGIN.PASSWORD_REQUIRED' | translate}}
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="remember-forgout-password" fxLayout="row" fxLayout.xs="column"
+                     fxLayoutAlign="space-between center">
+                    <mat-checkbox class="remember-me" aria-label="Remember Me">
+                        {{'LOGIN.REMEMBER' | translate}}
+                    </mat-checkbox>
+
+                    <a class="forgout-password" [routerLink]="'/forgout-password'" >
+                        {{'LOGIN.FORGOUT_PASSWORD' | translate}}
+                    </a>
+                </div>
+
+                <button mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
+                        [disabled]="loginForm.invalid || loading">
+                    {{'LOGIN.LOGIN' | translate}}
+                </button>
+            <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+
+            </form>
+
+           <!-- <div class="separator">
+                <span class="text">{{'LOGIN.OR' | translate}}</span>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="start center">
+
+                <button mat-raised-button class="google">
+                    {{'LOGIN.ENTER_WITH' | translate}} Google
+                </button>
+
+                <button mat-raised-button class="facebook">
+                    {{'LOGIN.ENTER_WITH' | translate}} Facebook
+                </button>
+
+            </div>
+
+            <div class="register" fxLayout="column" fxLayoutAlign="center center">
+                <span class="text">{{'LOGIN.DONT_HAVE_ACCOUNT' | translate}}?</span>
+                <a class="link" [routerLink]="'/register'">{{'LOGIN.CREATE_ACCOUNT' | translate}}</a>
+            </div>
+            -->
+        </div>
+    </div>
+</div>

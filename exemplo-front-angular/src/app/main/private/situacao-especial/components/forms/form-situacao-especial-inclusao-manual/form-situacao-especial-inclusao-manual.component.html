@@ -1,0 +1,47 @@
+<siiga-debugger [data]="
+    [
+        { label: 'model', value: model },
+        { label: 'listModels', value:  listModels },
+        { label: 'selectedModels', value: selectedModels },
+        { label: 'extraParams', value: extraParams },
+        { label: 'extraParamsFromParent', value: extraParamsFromParent },
+        { label: 'forGroup', value: formGroup.value }
+    ]">
+</siiga-debugger>
+
+<mat-card fxLayout="column" class="mt-28 mr-28 ml-28 mb-28 pr-32 pl-32">
+    <mat-card-header class="mt-20">
+        <div mat-card-avatar class="permissao-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title>Permitir Inclusão manual</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="m-0">
+        <form [formGroup]="formGroup">
+            <label>Informe os perfis de usuário que poderão aplicar a situação manualmente</label>
+            <div fxLayout="column" fxLayoutAlign="start stretch">
+
+                <div fxLayout="row" fxLayoutAlign="start center" class="mt-16 mb-16" fxFlex="100">
+                    <table mat-table [dataSource]="listaPerfis" style="width: 100%" class="mat-elevation-z2">
+                        <!-- Index Column -->
+                        <ng-container matColumnDef="descricao">
+                            <th mat-header-cell *matHeaderCellDef> Perfil do Usuário </th>
+                            <td mat-cell *matCellDef="let item">{{item.id}} - {{item.descricao}} </td>
+                        </ng-container>
+
+                        <!-- Index Column -->
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef> Selecione </th>
+                            <td mat-cell *matCellDef="let index"> <mat-checkbox (change)="marcarChecked(index)" [checked]="index.checked"></mat-checkbox> </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="mb-16">
+        <button mat-raised-button color="warn" (click)="retornar()"><mat-icon class="mr-8">keyboard_return</mat-icon>Voltar</button>
+        <button mat-raised-button color="primary" (click)="salvaPerfisSituacao()"><mat-icon class="mr-8">save</mat-icon>Salvar</button>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,13 @@
+<!-- breadcrumb -->
+<mat-toolbar class="sidenav-breadcrumbs">
+
+    <!--<a mat-button (click)="breadCrumbMain()" class="sidenav-title">Implementation Plan</a>-->
+    <a [routerLink]="'/' + home">{{title}}</a>
+    <mat-icon class="sidenav-breaddiv">keyboard_arrow_right</mat-icon>
+    <span class="sidenav-breadcrumb-span" *ngFor="let item of filterBreadCrumb; let i = index">
+        <mat-icon class="sidenav-breaddiv"  *ngIf="i > 0 ">keyboard_arrow_right</mat-icon>
+        <a [routerLink]="item.path" *ngIf="i < filterBreadCrumb.length-1 && item.url !== null">{{ item.title }}</a>
+        <span *ngIf="(i===breadcrumbList.length-1 || item.url === null) && item.title !== title">{{ item.title }}</span>
+      </span>
+</mat-toolbar>
+<div class="_border-bottom">&nbsp;</div>

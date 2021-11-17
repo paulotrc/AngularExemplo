@@ -1,0 +1,6 @@
+<ngx-dropzone (change)="onSelect($event)">
+    <ngx-dropzone-label>Clique ou arraste uma imagem aqui.</ngx-dropzone-label>
+    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+    </ngx-dropzone-preview>
+</ngx-dropzone>

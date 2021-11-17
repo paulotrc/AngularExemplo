@@ -1,0 +1,26 @@
+
+Sample-main{
+  mat-toolbar{
+    background-color: #0277bd !important;
+    color: #ffffff !important;
+  }
+
+}
+
+section div:nth-child(1){
+  margin-top: 20px;
+}
+
+section div:nth-child(2){
+  width: 50%;
+}
+
+@media print {
+  .dontPrint {
+    display: none !important;
+    width: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+}
+

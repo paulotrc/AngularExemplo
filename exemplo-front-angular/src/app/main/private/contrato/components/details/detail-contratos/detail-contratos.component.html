@@ -1,0 +1,218 @@
+<mat-card fxLayout="column" class="mt-28 mr-28 ml-28">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Detalhes do Contrato</span>
+            <button mat-icon-button (click)="onCloseModal.next('')" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-card-header class="mt-20">
+        <div mat-card-avatar class="dados-cadastrais-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title>Detalhar Contrato</mat-card-title>
+        <mat-card-subtitle> {{storage.retrieve('currentClient').nome}} | {{model.cpfCnpj | cpfCnpjMask}}</mat-card-subtitle>
+    </mat-card-header>
+<!--    <span *ngIf="true">{{model | json}}</span>-->
+    <mat-card-content class="m-0">
+        <div class="mat-card mat-elevation-z4 p-24 mr-24 mt-16 scrollable-content"
+            fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto">
+
+            <div fxLayout="row" fxLayoutAlign="none"class="mt-16">
+                <mat-accordion class="cliente-headers-align" multi style="min-width: 100%;">
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Contrato Comercial
+                            </mat-panel-title>
+                            <mat-panel-description fxLayoutAlign="end">
+                                <mat-icon>account_circle</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <div fxLayout="row" fxLayoutAlign="none">
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-0">
+                                <mat-label>Número Contrato:</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Número Contrato:"
+                                       value="{{model.numeroDoContrato}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Operação/ Produto</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Operação/ Produto"
+                                       value="{{model.produto.codigo}} / {{model.produto.descricao}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Segmento</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar a Segmento"
+                                       value="{{model.segmento}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Taxa</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar a Taxa"
+                                       value="{{model.taxa}}" readonly>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="none">
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-0">
+                                <mat-label>Tipo de Garantia</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Tipo de Garantia"
+                                       value="{{model.tipoDeGarantia}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Data Contratação</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Data Contratação"
+                                       value="{{model.dataContratacao}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Valor Contratado</mat-label>
+                                <input matInput
+                                       placeholder="Valor Contratado"
+                                       value="{{model.valorContratado | realCurrency}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Rating Contratado</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Rating Contratado"
+                                       value="{{model.ratingContratado}}" readonly>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="none">
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-0">
+                                <mat-label>Rating Cliente</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Rating Cliente"
+                                       value="{{model.ratingCliente}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Prazo Contratado</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Prazo Contratado"
+                                       value="{{model.prazoContratado}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Prazo Remanescente</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Prazo Remanescente"
+                                       value="{{model.prazoRemanescente}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Convenente</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Convenente"
+                                       value="{{model.descricaoConevente}}" readonly>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="none">
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-0">
+                                <mat-label>Status/Prazo</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Status/Prazo"
+                                       value=" {{model.status === 'A' ? 'Em Atraso' : (model.status === 'I' ? 'Inadimplente' : 'Prejuízo') }}/{{model.prazo}} dias" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Data CA</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Data CA"
+                                       value="{{model.dataCA}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Valor CA</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Valor CA"
+                                       value="{{model.valorCA | realCurrency}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Dívida Total</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Dívida Total"
+                                       value="{{model.valorDividaTotal | realCurrency}}" readonly>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="none">
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-0">
+                                <mat-label>Base Cálculo</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Base Cálculo"
+                                       value="{{model.baseCalculo}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Provisionamento</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o Provisionamento"
+                                       value="{{model.provisionamento}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>Agência</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar Agência"
+                                       value="{{model.codigoAgencia}}-{{model.descricaoAgencia}}" readonly>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="25"
+                                            class="pl-16">
+                                <mat-label>SR</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar SR"
+                                       value="{{model.sr}}" readonly>
+                            </mat-form-field>
+                        </div>
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="none" class="mt-16">
+                <mat-accordion class="cliente-headers-align" multi style="min-width: 100%;">
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Condiçoes de Recebimento
+                            </mat-panel-title>
+                            <mat-panel-description fxLayoutAlign="end">
+                                <mat-icon>account_circle</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <mat-form-field fxFlex="50" appearance="fill">
+                            <mat-label>Liquidação:</mat-label>
+                            <input matInput
+                                   placeholder="Favor informar o email"
+                                   value="{{(model?.condicoesOferecidas?.valorNegociado === undefined ? 0 : model.condicoesOferecidas.valorNegociado) | realCurrency}}" readonly>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="50" appearance="fill" class="pl-16">
+                            <mat-label>Valor:</mat-label>
+                            <input matInput
+                                   placeholder="Favor informar o telefone"
+                                   value="{{(model?.condicoesOferecidas?.valorDoPagamento === undefined ? 0 : model.condicoesOferecidas.valorDoPagamento) | realCurrency}}" readonly>
+                        </mat-form-field>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

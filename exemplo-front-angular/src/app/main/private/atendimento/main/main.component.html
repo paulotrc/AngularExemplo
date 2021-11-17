@@ -1,0 +1,38 @@
+<div id="main-clientes" class="page-layout simple  w-100-p inner-scroll">
+
+    <!-- HEADER -->
+    <!--<div class="pb-4 pt-0">-->
+        <mat-toolbar class="pb-0 pt-0">
+            <div fxLayout="column" fxLayoutAlign="start" class="pl-0 pr-24 pt-4 pb-4">
+                <mat-card-title [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Meus Atendimentos</mat-card-title>
+                <mat-card-subtitle *ngIf="showSubTitle">Pesquise ou chame a próxima senha de atendimento</mat-card-subtitle>
+            </div>
+        </mat-toolbar>
+    <siiga-breadcrumb  [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}"></siiga-breadcrumb>
+    <!--</div>-->
+
+    <!--<legend class="legend">MAIN CLIENTES</legend>-->
+    <section *ngIf="!formLoaded" fxLayout="column wrap" fxLayoutGap="5px" fxLayoutAlign="center center">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </section>
+
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- CENTER -->
+        <div class="center">
+            <!-- CONTENT -->
+            <div class="controls">
+                <template #loadComponent></template>
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CENTER -->
+
+    </div>
+    <!-- / CONTENT-->
+
+</div>

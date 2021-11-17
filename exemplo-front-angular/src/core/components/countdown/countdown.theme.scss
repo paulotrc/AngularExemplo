@@ -1,0 +1,17 @@
+@mixin core-countdown-theme($theme) {
+
+    $foreground: map-get($theme, foreground);
+
+    core-countdown {
+
+        .core-countdown {
+
+            .time {
+
+                .title {
+                    color: map-get($foreground, secondary-text);
+                }
+            }
+        }
+    }
+}

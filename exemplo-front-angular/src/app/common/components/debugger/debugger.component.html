@@ -1,0 +1,10 @@
+<div [ngClass]="debugg ? 'bvisible' : 'bunvisible'" fxLayout="column" fxLayoutAlign="start stretch">
+    <mat-hint>DEBUG:</mat-hint>
+    <code>
+        <pre *ngFor="let item of data ; index as i">
+            <!--DEBUG:: Apenas usar o extraParamsFromParent quando é necessário passar dados de uma tela pra outra:-->
+            <mat-hint>{{item.label}}:</mat-hint>
+            <!--<code>{{item.value | json}}</code>-->
+        </pre>
+    </code>
+</div>

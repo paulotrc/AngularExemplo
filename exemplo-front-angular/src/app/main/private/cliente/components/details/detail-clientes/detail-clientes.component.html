@@ -1,0 +1,192 @@
+<mat-card fxLayout="column" class="mt-28 mr-28 ml-28">
+    <mat-card-header class="mt-20">
+        <div mat-card-avatar class="dados-cadastrais-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title>Visualizar dados cadastrais</mat-card-title>
+        <mat-card-subtitle>Verifique se os dados do cliente estão atualizados</mat-card-subtitle>
+    </mat-card-header>
+    <siiga-debugger [data]="
+    [
+        { label: 'model', value: model },
+        { label: 'listModels', value:  listModels },
+        { label: 'selectedModels', value: selectedModels },
+        { label: 'extraParams', value: extraParams },
+        { label: 'extraParamsFromParent', value: extraParamsFromParent }
+    ]">
+    </siiga-debugger>
+    <mat-card-content class="m-0">
+        <div class="mat-card mat-elevation-z4 p-24 mr-24 mt-16" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto">
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-label fxFlex="15">
+                    <h3>Dados Pessoais</h3>
+                </mat-label>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <!--form-->
+                <form [formGroup]="formGroup" fxFlex="100">
+                    <mat-form-field appearance="fill" fxFlex="50">
+                        <mat-label>Nome</mat-label>
+                        <input matInput
+                               formControlName="nome"
+                               [(ngModel)]="model.nome"
+                               readonly>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" fxFlex="48"
+                                    class="pl-16">
+                        <mat-label>Cpf</mat-label>
+                        <input matInput
+                               formControlName="cpfCnpj"
+                               [(ngModel)]="model.cpfCnpj"
+                               readonly>
+                    </mat-form-field>
+
+                    <mat-form-field class="invisible example-full-width">
+                        <input matInput formControlName="idAtendimento" [(ngModel)]="model.idAtendimento" readonly>
+                    </mat-form-field>
+
+                </form>
+                <mat-form-field appearance="fill" fxFlex="33"
+                                class="pl-16">
+                    <mat-label>Data Última Alteração</mat-label>
+                    <input matInput value="08/04/2020 05:23" readonly>
+                    <mat-icon matSuffix>history</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="none">
+                <mat-accordion class="cliente-headers-align" multi style="min-width: 100%;">
+
+                    <span *ngFor="let item of model.enderecos">
+                        <mat-expansion-panel class="mb-16">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Endereço {{item.sequencial}}
+                                </mat-panel-title>
+                                <mat-panel-description fxLayoutAlign="end">
+                                    <mat-icon>map</mat-icon>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <div fxLayout="row" fxLayoutAlign="none">
+                                <mat-form-field appearance="fill" fxFlex="25"
+                                                class="pl-0">
+                                    <mat-label>CEP</mat-label>
+                                    <input matInput
+                                           placeholder="Favor informar o CEP"
+                                           [(ngModel)]="item.cep - item.cepComplemento" readonly>
+                                    <mat-error>CEP é obrigatório.</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex="25"
+                                                class="pl-16">
+                                    <mat-label>UF</mat-label>
+                                    <input matInput
+                                           placeholder="Favor informar o CEP"
+                                           [(ngModel)]="item.uf" readonly>
+                                    <mat-error>Estado é obrigatório.</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex="25"
+                                                class="pl-16">
+                                    <mat-label>Cidade</mat-label>
+                                    <input matInput
+                                           placeholder="Favor informar a cidade"
+                                           [(ngModel)]="item.nomeLocalidade" readonly>
+                                    <mat-error>Cidade é obrigatório.</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex="25"
+                                                class="pl-16">
+                                    <mat-label>Bairro</mat-label>
+                                    <input matInput
+                                           placeholder="Favor informar a bairro"
+                                           [(ngModel)]="item.bairro" readonly>
+                                    <mat-error>Bairro é obrigatório.</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="none">
+                                <mat-form-field appearance="fill" fxFlex="33"
+                                                class="pl-0">
+                                    <mat-label>Logradouro</mat-label>
+                                    <input matInput
+                                           placeholder="Favor informar o logradouro"
+                                           [(ngModel)]="item.logradouro" readonly>
+                                    <mat-error>Logradouro é obrigatório.</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex="33"
+                                                class="pl-16">
+                                    <mat-label>Número</mat-label>
+                                    <input matInput
+                                           placeholder="Favor informar o número"
+                                           [(ngModel)]="item.numero" readonly>
+                                    <mat-error>Número é obrigatorio.</mat-error>
+                                </mat-form-field>
+                                
+                                <mat-form-field appearance="fill" fxFlex="34" class="pl-16">
+                                    <mat-label>Complemento</mat-label>
+                                    <input matInput
+                                           placeholder="Favor informar a complemento"
+                                           [(ngModel)]="item.complemento" readonly>
+                                    <mat-error>Complemento é obrigatório.</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                        </mat-expansion-panel>
+                    </span>
+                </mat-accordion>
+
+            </div>
+            <div fxLayout="row" fxLayoutAlign="none" class="mt-16">
+                <mat-accordion class="cliente-headers-align" multi style="min-width: 100%;" fxFlex="50">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Emails
+                            </mat-panel-title>
+                            <mat-panel-description fxLayoutAlign="end">
+                                <mat-icon>mail</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <span *ngFor="let itemEmail of model.emails" formControlName="emailsFormFields">
+                            <mat-form-field fxFlex="100" appearance="fill">
+                                <mat-label>Email</mat-label>
+                                <input matInput
+                                       placeholder="Favor informar o email"
+                                       [(ngModel)]="itemEmail.coComunicacao" readonly>
+                            </mat-form-field>
+                        </span>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion class="cliente-headers-align" multi style="min-width: 100%;" class="pl-16" fxFlex="50">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Telefones
+                            </mat-panel-title>
+                            <mat-panel-description fxLayoutAlign="end">
+                                <mat-icon>local_phone</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <span *ngFor="let itemTelefone of model.telefones" formControlName="telefonesFormFields">
+                            <mat-form-field fxFlex="100" appearance="fill" class="pl-16">
+                                <mat-label>Telefone</mat-label>
+                                <input matInput
+                                       placeholder="Prefixo"
+                                       [(ngModel)]="'('+ itemTelefone.prefixo + ') ' + itemTelefone.coComunicacao" readonly>
+                            </mat-form-field>
+                        </span>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+
+
+        </div>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="mb-20 mr-16 pt-24">
+        <button mat-raised-button style="background-color: orange;color: white;" *ngIf="state !=='view'" (click)="redirect()">Alterar</button>
+        <!--        <button mat-raised-button color="primary" *ngIf="state !=='view'" (click)="redirectContratos()">Continuar</button>-->
+        <button mat-raised-button color="warn" (click)="redirectCancelar()">Cancelar</button>
+        <button mat-raised-button color="primary" *ngIf="state !=='view'"
+                (click)="sendDataOperation('get', 'contratos', 'contrato', 'contratos/search-contratos','','contratos/{cpfCnpj}', this.formGroup.value)">
+            Continuar
+        </button>
+    </mat-card-actions>
+</mat-card>

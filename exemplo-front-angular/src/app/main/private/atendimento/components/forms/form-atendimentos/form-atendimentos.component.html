@@ -1,0 +1,57 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="onCloseModal.next('')" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" corePerfectScrollbar>
+
+    <!-- REACTIVE FORM EXAMPLE -->
+
+    <form class="mat-white-bg mr-24 ml-24 mb-4 mt-4" [ngClass]='state =="view" ? "viewer" : "edit"'
+          fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" [formGroup]="formGroup">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field>
+                <mat-label>CPF</mat-label>
+                <input matInput formControlName="cpfCnpj" [mask]="getCpfCnpjMask()" [(ngModel)]="model.cpfCnpj"
+                       placeholder="Favor informar o CPF ou CNPJ"
+                       required>
+            </mat-form-field>
+        </div>
+
+        <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="start">
+            <button id="btnEnviar" *ngIf="state !=='view'"
+                    mat-raised-button
+                    (click)="sendDataOperation('create')"
+                    class="mat-accent btn m-4"
+                    [disabled]="formGroup.invalid">
+                Pesquisar
+            </button>
+            <button id="btnLimpar"
+                    mat-raised-button
+                    (click)="formGroup.reset()"
+                    [disabled]=""
+                    class="btn m-4">
+                Limpar
+            </button>
+            <button id="btnVoltar"
+                    mat-raised-button
+                    (click)="router.navigate([''])"
+                    class="btn m-4 btnVoltar">
+                Voltar
+            </button>
+            <button id="btnSair"
+                    mat-raised-button
+                    class="btn m-4">
+                Sair
+            </button>
+
+        </div>
+
+    </form>
+</div>
+</div>

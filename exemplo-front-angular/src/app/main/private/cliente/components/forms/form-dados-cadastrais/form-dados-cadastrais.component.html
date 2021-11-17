@@ -1,0 +1,122 @@
+<siiga-debugger [data]="
+    [
+        { label: 'model', value: model },
+        { label: 'listModels', value:  listModels },
+        { label: 'selectedModels', value: selectedModels },
+        { label: 'extraParams', value: extraParams },
+        { label: 'extraParamsFromParent', value: extraParamsFromParent },
+        { label: 'forGroup', value: formGroup.value }
+    ]">
+</siiga-debugger>
+<mat-card fxLayout="column" class="mt-28 mr-28 ml-28 mb-28">
+    <mat-card-header class="mt-20 ml-16">
+        <div mat-card-avatar class="dados-cadastrais-header-image" style="border-radius: 0%;"></div>
+        <mat-card-title *ngIf="state !=='view'">Alterar Dados Cadastrais</mat-card-title>
+        <mat-card-title *ngIf="state ==='view'">Visualizar Dados Cadastrais</mat-card-title>
+        <mat-card-subtitle>Verifique se os dados do cliente estão atualizados</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="m-0">
+        <form [formGroup]="formGroup">
+                <!--<div fxLayout="row" fxLayoutAlign="start center" style="display: none;">
+                    <mat-form-field appearance="fill" [hidden]="state==='view'">
+                        <mat-label>Atendimento</mat-label>
+                        <input matInput
+                               formControlName="idAtendimento"
+                               readonly>
+                    </mat-form-field>
+                </div>-->
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-label fxFlex="15">
+                        <h3>Dados Pessoais</h3>
+                    </mat-label>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-form-field appearance="fill" fxFlex="50">
+                        <mat-label>Nome</mat-label>
+                        <input matInput
+                               formControlName="nome"
+                               readonly>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" fxFlex="48"
+                                    class="pl-16">
+                        <mat-label>Cpf</mat-label>
+                        <input matInput
+                               formControlName="cpfCnpj"
+                               readonly>
+                    </mat-form-field>
+
+                    <!--<mat-form-field appearance="fill" fxFlex="33"
+                                    class="pl-16">
+                        <mat-label>Data Última Alteração</mat-label>
+                        <input matInput value="{{currentDate  | date:'dd/MM/yyyy'}}" readonly>
+                        <mat-icon matSuffix>history</mat-icon>
+                    </mat-form-field>-->
+                </div>
+                <sub-form-enderecos formControlName="enderecosFormFields"
+                                    [title]="'Endereços'"
+                                    [currentState]="state"
+                                    [model]="model.enderecos"
+                                    [itemControlAlias]="'enderecos'">
+
+                </sub-form-enderecos>
+                <div fxLayout="row" fxLayoutAlign="none" class="mt-16">
+                    <sub-form-input-list formControlName="emailsFormFields" fxFlex="100" 
+                                         [title]="'E-mails'"
+                                         [label]="'E-mail'"
+                                         [type]="'email'"
+                                         [model]="model.emails"
+                                         [icon]="'mail'"
+                                         [itemControlAlias]="'emails'"
+                                         [maxlength]="100" [required]="true"
+                                         [fieldsToView]="['coComunicacao']"
+                                         [currentState]="state">
+                    </sub-form-input-list>
+                    <sub-form-input-list formControlName="telefonesFormFields" fxFlex="100" class="ml-16"
+                                         [title]="'Telefones'"
+                                         [label]="'Telefone'"
+                                         [type]="'tel'"
+                                         [icon]="'local_phone'"
+                                         [model]="model.telefones"
+                                         [itemControlAlias]="'telefones'"
+                                         [fieldsToView]="['coComunicacao']"
+                                         [maxlength]="16" [required]="true"
+                                         [currentState]="state">
+                    </sub-form-input-list>
+                </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" class="mb-20 mr-16 pt-24">
+        <button id="btnVoltar"
+                mat-raised-button
+                (click)="router.navigate([''])"
+                class="btn m-4" color="primary">
+            <mat-icon>arrow_back</mat-icon>&nbsp;&nbsp;Voltar
+        </button>
+        <button mat-raised-button style="background-color: orange; color: white;" *ngIf="state ==='view'"
+                (click)="changeState('edit')">
+            <mat-icon>edit</mat-icon>&nbsp;&nbsp;
+            Alterar
+        </button>
+        <!--        <button mat-raised-button color="primary" *ngIf="state !=='view'" (click)="redirectContratos()">Continuar</button>-->
+        <button mat-raised-button color="warn" *ngIf="state !=='view'" (click)="changeState('view', true)">
+            <mat-icon>cancel</mat-icon>&nbsp;&nbsp;
+            Cancelar
+        </button>
+        <!--@todo habilitar os POST no state edit -->
+        <button mat-raised-button color="primary" *ngIf="state !=='view'"
+                (click)="sendDynamicDataOperation(objConfigDadosCadastrais());">
+            <!--                (click)="sendDataOperation('create', 'clientes', 'cliente', 'contratos/search-contratos','','clientes', this.formGroup.value)">-->
+            <mat-icon>save</mat-icon>&nbsp;&nbsp;
+            Salvar e Continuar
+        </button>
+        <button mat-raised-button color="primary" *ngIf="state ==='view'"
+                (click)="redirect( 'contratos/search-contratos',
+                {nome: formGroup.get('nome').value,
+                 cpfCnpj: formGroup.get('cpfCnpj').value})">
+            <mat-icon>fast_forward</mat-icon>&nbsp;&nbsp;
+            Continuar
+        </button>
+    </mat-card-actions>
+</mat-card>

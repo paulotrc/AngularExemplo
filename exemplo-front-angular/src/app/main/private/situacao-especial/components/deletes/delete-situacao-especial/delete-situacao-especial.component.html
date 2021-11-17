@@ -1,0 +1,42 @@
+<form [formGroup]="formGroup">
+    <mat-dialog-content>
+        <mat-card fxLayout="column">
+            <mat-card-header class="mt-20">
+                <div mat-card-avatar class="delete-situacao-header-image" style="border-radius: 0%;"></div>
+                <mat-card-title>Situação Especial</mat-card-title>
+                <mat-card-subtitle>Exclusão de situação especial</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="m-0" style="width: 900px">
+                <div class="mat-card mat-elevation-z4 p-24 mr-96 mt-16 scrollable-content" fxLayout="row" fxLayoutAlign="start stretch" fxFlex="1 0 auto">
+                    <div class="control-group" fxLayout="column" fxLayoutAlign="start stretch" flex="50" flex-gt-sm>
+                        <mat-expansion-panel [expanded]="true">
+                            <div fxLayout="column" fxLayoutAlign="start stretch" style="width: 790px">
+
+                                <mat-label>Grupo</mat-label>
+                                <mat-form-field appearance="fill" fxFlex="50" class="pr-16">
+                                    <input matInput readonly value="{{model.grupo + ' - ' + model.grupoDescricao}}}">
+                                </mat-form-field>
+
+                                <mat-label>Situação Especial</mat-label>
+                                <mat-form-field appearance="fill" fxFlex="50" class="pr-16">
+                                    <input matInput readonly value="{{model.id + ' - ' + model.descricao}}}">
+                                </mat-form-field>
+
+                                <mat-label required>Observação</mat-label>
+                                <mat-form-field appearance="outline" fxFlex="50" class="pr-16">
+                                    <textarea matInput formControlName="observacao" [value]="model.observacao" placeholder="Observação"></textarea>
+                                </mat-form-field>
+
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" [mat-dialog-close]="undefined"><mat-icon class="mr-8">cancel</mat-icon>Fechar</button>
+        <button mat-raised-button color="primary" (click)="deletarSituacaoEspecial();"><mat-icon class="mr-8">delete</mat-icon>Excluir</button>
+    </mat-dialog-actions>
+</form>
+

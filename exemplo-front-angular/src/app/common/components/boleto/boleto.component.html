@@ -1,0 +1,418 @@
+
+<div id="report" class="modern page-layout blank" fxLayout="column" fxLayoutAlign="end center">
+    <div class="report-container">
+        <div id="invoice" class="modern page-layout blank" fxLayout="row">
+            <div class="invoice-container">
+                <!-- model.report -->
+                <div class="card">
+                    <div class="header" fxLayout="row" fxLayoutAlign="space-between start">
+                        <div class="ids" fxLayout="column">
+                            <div fxLayout="row" fxLayoutAlign="start start">
+                                <div fxLayout="row" class="seller dontPrint" fxLayoutAlign="start center">
+
+                                    <div class="logo">
+                                        <img src="../../../../../../../assets/images/caixa/caixa-logo-x.png">
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="detail">
+                                        <div class="title">CAIXA ECONÔMICA FEDERAL </div>
+                                        <div class="address">
+                                            SBS QD 04 LOTE 3/4
+                                        </div>
+                                        <div class="phone dontPrint">
+                                            <span>SAC CAIXA:</span>
+                                            0800 726 0101 (informações, reclamações, sugestões e elogios)<br />
+                                            Para pessoas com deficiência auditiva: 0800 726 2492
+                                        </div>
+                                        <div class="email dontPrint">
+                                            <span>Ouvidoria:</span>
+                                            0800 725 7474 (reclamações não solucionadas e denúncias)
+                                        </div>
+                                        <div class="website dontPrint">
+                                            <span>Web:</span>
+                                            http://www.caixa.gov.br/Paginas/home-caixa.aspx
+                                        </div>
+                                    </div>
+                                </div>
+                                <div fxLayout="row" class="client" fxLayoutAlign="start center">
+                                    <div class="label" fxLayout="row" fxLayoutAlign="end center">
+                                        <div>CLIENTE</div>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="detail">
+                                        <div class="title">Senhor(a) {{dadosBoleto.dadosCadastrais?.sacado}}</div>
+                                        <div class="address">
+                                            CPF/CNPJ {{dadosBoleto.dadosCadastrais?.cpfCnpj | cpfCnpjMask}}
+                                        </div>
+                                        <div class="phone">
+                                            <span>Compromisso de pagamento:</span>
+                                            nº {{dadosBoleto.nossoNumero}}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                <div class="content" id="contentToConvert">
+
+                    <div class="my-full-screen-dialog  p-24 m-0" width="1024px">
+                        <div class="note fontTextoTopo">
+                            <p>
+                                1 Este boleto tem por finalidade a liquidação à vista de seu(s) contrato(s) listados abaixo, que totalizam o Saldo Devedor
+                                Atualizado de R$ 1.086,81, sendo o valor acordado neste boleto de R$ 619,45, com o abatimento de R$ 467,36 e vencimento
+                                em 04/06/2019.
+                            </p>
+                            <p>
+                                1.1 A seguir nome do produto, número do contrato, saldo devedor e dias de atraso, respectivamente, dos contratos a serem
+                                liquidados com o pagamento desde boleto: RENEGOCIAÇÃO DE DÍVIDAS - 11.3311.191.0000757-27 - R$ 359,81 - 552 dias,
+                                CHEQUE ESPECIAL CAIXA (CROT PF) - 3311.001.00021892-5 - R$ 727,00 - 576 dias.
+                            </p>
+                            <p>
+                                2 Os descontos oferecidos são temporários, de mera liberalidade da CAIXA, e somente se concretizarão a partir da aceitação
+                                das condições de negociação expressas acima, englobando todos os contratos, confirmada por meio do pagamento
+                                exclusivamente do presente boleto que somente poderá ser efetuado até o dia 04/06/2019, sendo vedado o seu pagamento com
+                                cheque e após a data de vencimento.
+                            </p>
+                            <p>
+                                2.1 Em nenhuma hipótese poderá haver alteração nos valores e/ou data de vencimento do boleto, sob a pena de tornar nulo o
+                                presente boleto.
+                            </p>
+                            <p>
+                                2.2 A exclusão dos registros nos órgãos de proteção ao crédito relativos às operações aqui relacionadas, dar-se-á no prazo
+                                legal, a partir do pagamento do boleto supra citado e do respectivo recebimento do valor pela CAIXA.
+                            </p>
+                            <p>
+                                3 A concessão de desconto sobre os valores originalmente contratados e devidos ensejará impedimento de o cliente contratar
+                                novas linhas de crédito com a CAIXA por 5(cinco) anos, podendo retornar a operar caso realize o ressarcimento de valor R$
+                                97,12, com a atualização devida, que representa parte do abatimento concedido.
+                            </p>
+                            <p>
+                                4 Em caso de dúvidas, entre em contato com a CAIXA através do telefone 0800 726 8068, opção 8.
+                            </p>
+                        </div>
+                        <div class="boleto-content p-0" fxLayout="column" fxLayoutAlign="start stretch">
+                            <div class="lineZero" fxLayout="row" fxLayoutAlign="start end">
+                                <div class="logo-bank">
+                                    <img src="assets/images/boleto/logocaixa.jpg" width="150" class="h-40" border="0">
+                                </div>
+                                <img class="h-22 mr-8" src="assets/images/boleto/3.png" width="2" border="0">
+                                <div class="codigoBancoComDv bc">{{dadosBoleto.dadosCadastrais?.codigoBancoComDv}}</div>
+                                <img class="h-22 mr-8" src="assets/images/boleto/3.png" width="2" border="0">
+                                <div class="linhaDigitavel ld">{{dadosBoleto.linhaDigitavel}}</div>
+                            </div>
+
+                            <div class="lineOne" fxLayout="row" fxLayoutAlign="start start" width="666">
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 cedente">
+                                    <div class="ct h-13 mb-16" style="font-size: large;">Cedente</div>
+                                    <div class="cp h-12" style="font-size: large;">{{dadosBoleto.dadosCadastrais?.cedente}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 agenciaCodigo">
+                                    <div class="ct h-13 mb-4">Agência/Código do Cedente</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.agenciaCodigo}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 especie">
+                                    <div class="ct h-13 mb-4">Espécie</div>
+                                    <div class="cp h-12" width="34">{{dadosBoleto.dadosCadastrais?.especie}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="2" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 quantidade">
+                                    <div class="ct h-13 mb-4">Quantidade</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.quantidade}}</div> <!--este campo não está vindo na model-->
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 nossoNumero">
+                                    <div class="ct h-13 mb-4">Nosso Número</div>
+                                    <div class="cp h-12">{{dadosBoleto.nossoNumero}}</div>
+                                </div>
+                            </div>
+
+                            <div class="lineTwo" fxLayout="row" fxLayoutAlign="start start" width="666">
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 numeroDocumento">
+                                    <div class="ct h-13 mb-4">Número do documento</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.numeroDocumento}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 cpfCnpj">
+                                    <div class="ct h-13 mb-4">CPF/CNPJ</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.cpfCnpj}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 dataVencimento">
+                                    <div class="ct h-13 mb-4">Vencimento</div>
+                                    <div class="cp h-12">{{dadosBoleto.dataVencimento}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="2" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 valorBoleto">
+                                    <div class="ct h-13 mb-4">Valor documento</div>
+                                    <div class="cp h-12">{{dadosBoleto.valoBoleto | realCurrency}}</div>
+                                </div>
+                            </div>
+
+                            <div class="lineThree" fxLayout="row" fxLayoutAlign="start start" width="666">
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 descontoAbatimento">
+                                    <div class="ct h-13 mb-4">(-) Desconto / Abatimentos</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.descontoAbatimento}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 outrasDeducoes">
+                                    <div class="ct h-13 mb-4">(-) Outras deduções</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.outrasDeducoes}}</div><!--este campo não está vindo na model-->
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 multaMora">
+                                    <div class="ct h-13 mb-4">(+) Mora / Multa</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.multaMora}}</div><!--este campo não está vindo na model-->
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 outrosAcrescimos">
+                                    <div class="ct h-13 mb-4">(+) Outros acréscimos</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.outrosAcrescimos}}</div><!--este campo não está vindo na model-->
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="2" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 valorCobrado">
+                                    <div class="ct h-13 mb-4">(=) Valor cobrado</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.valorCobrado}}</div><!--este campo não está vindo na model-->
+                                </div>
+                            </div>
+
+                            <div class="lineFour" fxLayout="row" fxLayoutAlign="start start" width="666">
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 sacado">
+                                    <div class="ct h-13 mb-4">Sacado</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.sacado}}</div>
+                                </div>
+                            </div>
+
+                            <div class="lineFive" fxLayout="row" fxLayoutAlign="start start" width="666">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 mb-8 demonstrativo">
+                                    <div class="ct h-13 mb-4">Demonstrativo</div>
+                                    <div class="campo">{{dadosBoleto.dadosCadastrais?.demonstrativo1}}</div><!--este campo não está vindo na model-->
+                                    <div class="campo">{{dadosBoleto.dadosCadastrais?.demonstrativo2}}</div><!--este campo não está vindo na model-->
+                                    <div class="campo">{{dadosBoleto.dadosCadastrais?.demonstrativo3}}</div><!--este campo não está vindo na model-->
+                                </div>
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 autenticacao">
+                                    <div class="ct h-13 mb-4">Autenticação mecânica</div>
+                                </div>
+                            </div>
+
+                            <div fxLayout="column" fxLayoutAlign="center end" class="ml-4 mr-4 mt-16 pontilhada">
+                                <div class="ct h-13">Corte na linha pontilhada</div>
+                                <img class="h-1" src="assets/images/boleto/6.png" width="665" border="0">
+                            </div>
+
+                            <div class="lineZero mt-24" fxLayout="row" fxLayoutAlign="start end">
+                                <div class="logo-bank">
+                                    <img src="assets/images/boleto/logocaixa.jpg" width="150" class="h-40" border="0">
+                                </div>
+                                <img class="h-22 mr-8" src="assets/images/boleto/3.png" width="2" border="0">
+                                <div class="codigoBancoComDv bc">{{dadosBoleto.dadosCadastrais?.codigoBancoComDv}}</div>
+                                <img class="h-22 mr-8" src="assets/images/boleto/3.png" width="2" border="0">
+                                <div class="linhaDigitavel ld">{{dadosBoleto.linhaDigitavel}}</div>
+                            </div>
+
+                            <div class="lineSix" fxLayout="row" fxLayoutAlign="start start" width="666">
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 localPagamento">
+                                    <div class="ct h-13 mb-4">Local de pagamento</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.localPagamento}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="2" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 dataVencimento-b">
+                                    <div class="ct h-13 mb-4">Vencimento</div>
+                                    <div class="cp h-12">{{ (dataVencimento != "") ? dadosBoleto.dataVencimento : "Contra Apresentação" }}</div>
+                                </div>
+                            </div>
+
+                            <div class="lineSeven" fxLayout="row" fxLayoutAlign="start start" width="666">
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 cedente-b">
+                                    <div class="ct h-13 mb-4">Cedente</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.cedente}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="2" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 agenciaCodigo-b">
+                                    <div class="ct h-13 mb-4">Agência/Código cedente</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.agenciaCodigo}}</div>
+                                </div>
+                            </div>
+
+                            <div class="lineEight" fxLayout="row" fxLayoutAlign="start start" width="666">
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 dataDocumento">
+                                    <div class="ct h-13 mb-4">Data do documento</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.dataDocumento}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 numeroDocumento-b">
+                                    <div class="ct h-13 mb-4">Núm. documento</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.numeroDocumento}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 especieDocumento">
+                                    <div class="ct h-13 mb-4">Espécie doc.</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.especieDocumento}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 aceite">
+                                    <div class="ct h-13 mb-4">Aceite</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.aceite}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 dataProcessamento">
+                                    <div class="ct h-13 mb-4">Data processamento</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.dataDocumento}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="2" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 nossoNumero-b">
+                                    <div class="ct h-13 mb-4">Nosso número</div>
+                                    <div class="cp h-12">{{dadosBoleto.nossoNumero}}</div>
+                                </div>
+                            </div>
+
+                            <div class="lineNine" fxLayout="row" fxLayoutAlign="start start" width="666">
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 usoBanco">
+                                    <div class="ct h-13 mb-4">Uso do banco</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.usoBanco}}</div><!--este campo não está vindo na model-->
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 carteira">
+                                    <div class="ct h-13 mb-4">Carteira</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.carteira}}</div><!--este campo não está vindo na model-->
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 especie-b">
+                                    <div class="ct h-13 mb-4">Espécie</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.especie}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 quantidade-b">
+                                    <div class="ct h-13 mb-4">Quantidade</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.quantidade}}</div><!--este campo não está vindo na model-->
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 valorUnitario">
+                                    <div class="ct h-13 mb-4">Valor Documento</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.valorBoleto}}</div>
+                                </div>
+                                <img class="h-34" src="assets/images/boleto/1.png" width="2" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 valorBoleto-b">
+                                    <div class="ct h-13 mb-4">(=) Valor documento</div>
+                                    <div class="cp h-12">{{dadosBoleto.dadosCadastrais?.valorBoleto}}</div>
+                                </div>
+                            </div>
+
+                            <div class="lineTen" fxLayout="row" fxLayoutAlign="start stretch" width="666">
+                                <img class="mh-100" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 instrucoes">
+                                    <div class="ct h-13 mb-4">Instruções (Texto de responsabilidade do cedente)</div>
+                                    <div class="cp">
+                                        <div class="campo">
+                                            {{dadosBoleto.dadosCadastrais?.instrucoes1}}
+                                            {{dadosBoleto.dadosCadastrais?.instrucoes2}}
+                                            {{dadosBoleto.dadosCadastrais?.instrucoes3}}
+                                            {{dadosBoleto.dadosCadastrais?.instrucoes4}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-0 descontoAbatimento-b">
+                                    <div fxLayout="row" fxLayoutAlign="start start" style="height: 60px; border-bottom-width: 2px !important; border-top-width: 0px !important; border-left-width: 0px !important; border-right-width: 0px !important; border-style: solid;">
+                                        <img class="h-34 mr-4" src="assets/images/boleto/1.png" width="2" border="0">
+                                        <div class="ct h-34 mb-0 mt-8">(-) Desconto / Abatimentos</div>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutAlign="start start" style="height: 60px; border-bottom-width: 2px !important; border-top-width: 0px !important; border-left-width: 0px !important; border-right-width: 0px !important; border-style: solid;">
+                                        <img class="h-34 mr-4" src="assets/images/boleto/1.png" width="2" border="0">
+                                        <div class="ct h-34 mb-0 mt-8">(-) Outras deduções</div>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutAlign="start start" style="height: 60px; border-bottom-width: 2px !important; border-top-width: 0px !important; border-left-width: 0px !important; border-right-width: 0px !important; border-style: solid;">
+                                        <img class="h-34 mr-4" src="assets/images/boleto/1.png" width="2" border="0">
+                                        <div class="ct h-34 mb-0 mt-8">(+) Mora / Multa</div>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutAlign="start start" style="height: 60px; border-bottom-width: 2px !important; border-top-width: 0px !important; border-left-width: 0px !important; border-right-width: 0px !important; border-style: solid;">
+                                        <img class="h-34 mr-4" src="assets/images/boleto/1.png" width="2" border="0">
+                                        <div class="ct h-13 mb-0 mt-8">(+) Outros acréscimos</div>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutAlign="start start" style="height: 60px; border-bottom-width: 2px !important; border-top-width: 0px !important; border-left-width: 0px !important; border-right-width: 0px !important; border-style: solid;">
+                                        <img class="h-34 mr-4" src="assets/images/boleto/1.png" width="2" border="0">
+                                        <div class="ct h-34 mb-0 mt-8">(=) Valor cobrado</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lineEleven" fxLayout="row" fxLayoutAlign="start stretch" width="666">
+                                <img class="mh-100" src="assets/images/boleto/1.png" width="1" border="0">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 instrucoes">
+                                    <div class="ct h-13 mb-4">Sacado</div>
+                                    <div class="cp">
+                                        <div class="campo">
+                                            {{dadosBoleto.dadosCadastrais?.sacado}}
+                                            {{dadosBoleto.dadosCadastrais?.endereco1}}
+                                            {{dadosBoleto.dadosCadastrais?.endereco2}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div fxLayout="column" fxLayoutAlign="end stretch" class="ml-4 mr-0 mt-8 descontoAbatimento-b">
+                                    <div fxLayout="row" fxLayoutAlign="start start">
+                                        <img class="h-34 mr-4" src="assets/images/boleto/1.png" width="2" border="0">
+                                        <div class="ct h-34 mb-0">Cód. baixa</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lineBarcode" fxLayout="row" fxLayoutAlign="start stretch" width="666">
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-4 mt-8 instrucoes">
+                                    <div class="ct h-13 mb-4">Sacador/Avalista</div>
+                                    <div class="mh-100">
+                                        <draw-barcode [barcodeSequence]="dadosBoleto?.linhaDigitavel"></draw-barcode>
+                                    </div>
+                                </div>
+                                <div fxLayout="column" fxLayoutAlign="start stretch" class="ml-4 mr-0 mt-8 descontoAbatimento-b">
+                                    <div fxLayout="row" fxLayoutAlign="start start">
+                                        <div class="ct h-34 mb-0">Autenticação mecânica - <b class="ti">Ficha de Compensação</b></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div fxLayout="column" fxLayoutAlign="center end" class="ml-4 mr-4 mt-16 pontilhada">
+                                <div class="ct h-13">Corte na linha pontilhada</div>
+                                <img class="h-1" src="assets/images/boleto/6.png" width="665" border="0">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                    <div class="footer  mt-16">
+                        <div class="note">Em caso de dúvidas, entre em contato com a CAIXA através do telefone 0800 726 8068, opção 8.</div>
+
+                        <div div fxLayout="row" fxLayoutAlign="start start">
+                            <div class="logo">
+                                <img src="../../../../../../../assets/images/caixa/caixa-logo-x.png">
+                            </div>
+                            <div class="small-note">
+                                SAC CAIXA: 0800 726 0101 (informações, reclamações, sugestões e elogios)
+                                Para pessoas com deficiência auditiva: 0800 726 2492
+                                Ouvidoria: 0800 725 7474 (reclamações não solucionadas e denúncias)
+                                CAIXA ECONÔMICA FEDERAL - SBS QD 04 LOTE 3/4
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="end start" class="mt-16">
+                            <button mat-raised-button color="primary" (click)="convetToPDF(dadosBoleto.nossoNumero)" class="dontPrint">
+                                <mat-icon>print</mat-icon>&nbsp;&nbsp;Gerar PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- / model.report -->
+            </div>
+        </div>
+    </div>
+</div>

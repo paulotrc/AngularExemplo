@@ -1,0 +1,40 @@
+
+
+
+
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0" *ngIf="dialogTitle">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="onCloseModal.next('')" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" corePerfectScrollbar>
+        <mat-card>cd
+            <mat-card-header>
+                <div mat-card-avatar class="contrato-header-image"></div>
+                <mat-card-title>Contrato - 17.0761.191.0002315/32</mat-card-title>
+                <mat-card-subtitle>Operação / Produto -  191 / Cheque especial</mat-card-subtitle>
+                <mat-card-subtitle>Status / Prazo -  Inadimplente: 210 dias</mat-card-subtitle>
+                <mat-card-subtitle>Valor CA -  R$ 10.223,48</mat-card-subtitle>
+                <mat-card-subtitle>Valor Minimo -  R$ 35.200,00</mat-card-subtitle>
+                <mat-card-subtitle>Dívida Total -  R$ 50.369,68</mat-card-subtitle>
+                <form>
+                    <mat-form-field>
+                        <mat-label>Valor Negociado</mat-label>
+                        <input formControlName="valorNegociado" matInput>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Desconto %</mat-label>
+                        <input formControlName="desconto" matInput type="number" min="1">
+                    </mat-form-field>
+                </form>
+            </mat-card-header>
+        </mat-card>
+
+    </div>
+</div>

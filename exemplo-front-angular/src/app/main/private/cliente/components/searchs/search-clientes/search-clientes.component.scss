@@ -1,0 +1,1331 @@
+@import "src/core/scss/app";
+
+mat-card-actions {
+    bottom: 0;
+}
+
+.card-ultimos-atendimentos{
+    cursor: pointer;
+}
+
+.ai{
+    color: #e2964a !important;
+}
+
+.dc{
+    color: #ff8b28 !important;
+}
+
+.cs{
+    color: #1f6377 !important;
+}
+
+.si{
+    color: #1f6377 !important;
+}
+.ac{
+    color: #8db9ff !important;
+}
+
+.form-dialog {
+
+    @include media-breakpoint('xs') {
+        width: 100%;
+    }
+
+    @include media-breakpoint-up('xs') {
+        width: 400px;
+    }
+
+    .mat-dialog-container {
+        padding: 0;
+
+        .mat-toolbar {
+            flex: 1 0 auto;
+            min-height: initial;
+        }
+
+        .toolbar-bottom {
+            height: auto;
+        }
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+    }
+}
+
+.cliente-header-image {
+    background-image: url(~/assets/images/caixa/icons/talk-128.jpg);
+    background-size: cover;
+}
+.ultimo-card-header-image {
+    background-image: url(~/assets/images/caixa/icons/report-3-128.png);
+    background-size: cover;
+}
+
+
+.mediaViewInfo {
+    --web-view-name: 01;
+    --web-view-id: ID01;
+    --web-scale-to-fit: true;
+    --web-scale-to-fit-type: fit;
+    --web-scale-on-resize: true;
+    --web-center-horizontally: true;
+    --web-center-vertically: true;
+    --web-enable-deep-linking: true;
+}
+
+:root {
+    --web-view-ids: ID01;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+#ID01 {
+    position: absolute;
+    width: 100%;
+    height: 768px;
+    background-color: rgba(255,255,255,1);
+    overflow: hidden;
+    --web-view-name: 01;
+    --web-view-id: ID01;
+    --web-scale-to-fit: true;
+    --web-scale-to-fit-type: fit;
+    --web-scale-on-resize: true;
+    --web-center-horizontally: true;
+    --web-center-vertically: true;
+    --web-enable-deep-linking: true;
+}
+
+@keyframes {
+}
+
+@keyframes {
+}
+
+@keyframes {
+}
+
+#Group_4 {
+    position: absolute;
+    width: 250px;
+    height: 77px;
+    left: 80px;
+    top: 200px;
+    overflow: visible;
+}
+
+#Group_3 {
+    position: absolute;
+    width: 388px;
+    height: 48px;
+    left: 0px;
+    top: 29px;
+    overflow: visible;
+}
+
+#Rectangle_14 {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(208,208,208,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Rectangle_14 {
+    position: absolute !important;
+    overflow: visible;
+    width: 388px;
+    height: 48px;
+    left: 0px;
+    top: 25px;
+}
+
+#CPF_CNPJ__Contrato_ou_Boleto {
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    overflow: visible;
+    width: 227px;
+    white-space: nowrap;
+    line-height: 21px;
+    margin-top: -2.5px;
+    text-align: left;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: rgba(155,155,155,1);
+}
+
+#Group_2 {
+    position: absolute;
+    width: 180px;
+    height: 48px;
+    left: 484px;
+    top: 230px;
+    overflow: visible;
+    --web-animation: fadein 0.4s ease-in-out;
+    --web-action-type: page;
+    --web-action-target: Editou.html;
+    cursor: pointer;
+}
+
+#Rectangle_14_y {
+    fill: url(#Rectangle_14_y);
+    stroke: rgba(30,41,71,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Rectangle_14_y {
+    position: absolute;
+    overflow: visible;
+    width: 180px;
+    height: 48px;
+    left: 0px;
+    top: 0px;
+}
+
+#Pesquisar {
+    left: 52.549px;
+    top: 10px;
+    position: absolute;
+    overflow: visible;
+    width: 77px;
+    white-space: nowrap;
+    line-height: 21px;
+    margin-top: -0.5px;
+    text-align: center;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(255,255,255,1);
+}
+
+#Line_5 {
+    fill: transparent;
+    stroke: rgba(198,198,198,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Line_5 {
+    overflow: visible;
+    position: absolute;
+    width: 1px;
+    height: 118px;
+    left: 753.5px;
+    top: 200px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#Group_24 {
+    position: absolute;
+    width: 252.997px;
+    height: 48px;
+    left: 843px;
+    top: 230px;
+    overflow: visible;
+    --web-animation: fadein 0.4s ease-in-out;
+    --web-action-type: page;
+    --web-action-target: Editou.html;
+    cursor: pointer;
+}
+
+#Path_2_ {
+    fill: url(#Path_2_);
+    stroke: rgba(170,84,0,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Path_2_ {
+    overflow: visible;
+    position: absolute;
+    width: 252.997px;
+    height: 48px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#Group_23 {
+    position: absolute;
+    width: 195.555px;
+    height: 26px;
+    left: 30.633px;
+    top: 10.574px;
+    overflow: visible;
+}
+
+#Senha_de_Atendimento {
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    overflow: visible;
+    width: 181px;
+    white-space: nowrap;
+    line-height: 22px;
+    margin-top: -1px;
+    text-align: center;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(255,255,255,1);
+}
+
+#Path {
+    fill: rgba(255,255,255,1);
+}
+
+.Path {
+    overflow: visible;
+    position: absolute;
+    width: 9.005px;
+    height: 5.257px;
+    transform: translate(-3px, 1px) matrix(1,0,0,1,191.424,11.7055) rotate(270deg);
+    transform-origin: center;
+    left: 0px;
+    top: 0px;
+}
+
+#ltimos_Atendimentos {
+    left: 80px;
+    top: 320px;
+    position: absolute;
+    overflow: visible;
+    width: 201px;
+    white-space: nowrap;
+    line-height: 28px;
+    margin-top: -3px;
+    text-align: left;
+    font-family: Futura;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    color: #48586c;
+}
+
+#Group_26 {
+    position: absolute;
+    width: 280px;
+    height: 132px;
+    left: 80px;
+    top: 569px;
+    overflow: visible;
+}
+
+#Rectangle_16 {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(208,224,227,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Rectangle_16 {
+    position: absolute;
+    overflow: visible;
+    width: 280px;
+    height: 132px;
+    left: 0px;
+    top: 0px;
+}
+
+#Status {
+    left: 18px;
+    top: 57px;
+    position: absolute;
+    overflow: visible;
+    width: 209px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    color: rgba(58,72,89,1);
+}
+
+#Status_bb {
+    left: 18px;
+    top: 86px;
+    position: absolute;
+    overflow: visible;
+    width: 129px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -1.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(95,117,143,1);
+}
+
+#Group_25 {
+    position: absolute;
+    width: 244.5px;
+    height: 28.5px;
+    left: 18px;
+    top: 14px;
+    overflow: visible;
+}
+
+#Status_bd {
+    left: 15px;
+    top: 2px;
+    position: absolute;
+    overflow: visible;
+    width: 33px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -2.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: rgba(172,172,172,1);
+}
+
+#Ellipse_3_bn {
+    fill: rgba(175,202,11,1);
+}
+
+.Ellipse_3_bn {
+    position: absolute;
+    overflow: visible;
+    width: 8px;
+    height: 8px;
+    left: 0px;
+    top: 6px;
+}
+
+#Status_bf {
+    left: 200px;
+    top: 0px;
+    position: absolute;
+    overflow: visible;
+    width: 45px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -1.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(172,172,172,1);
+}
+
+#Line_6 {
+    fill: transparent;
+    stroke: rgba(230,230,230,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Line_6 {
+    overflow: visible;
+    position: absolute;
+    width: 244px;
+    height: 1px;
+    left: 0.5px;
+    top: 28.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#Group_27 {
+    position: absolute;
+    width: 287px;
+    height: 132px;
+    left: 80px;
+    top: 569px;
+    overflow: visible;
+}
+
+#Rectangle_16_bi {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(208,224,227,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Rectangle_16_bi {
+    position: absolute;
+    overflow: visible;
+    width: 287px;
+    height: 132px;
+    left: 0px;
+    top: 0px;
+}
+
+#Status_bj {
+    left: 18px;
+    top: 57px;
+    position: absolute;
+    overflow: visible;
+    width: 209px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    color: rgba(58,72,89,1);
+}
+
+#Status_bk {
+    left: 18px;
+    top: 86px;
+    position: absolute;
+    overflow: visible;
+    width: 129px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -1.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(95,117,143,1);
+}
+
+#Group_25_bl {
+    position: absolute;
+    width: 251.5px;
+    height: 28.5px;
+    left: 18px;
+    top: 14px;
+    overflow: visible;
+}
+
+#Status_bm {
+    left: 15px;
+    top: 2px;
+    position: absolute;
+    overflow: visible;
+    width: 33px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -2.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: rgba(150,150,150,1);
+}
+
+#Ellipse_3_bn {
+    fill: rgba(175,202,11,1);
+}
+
+.Ellipse_3_bn {
+    position: absolute;
+    overflow: visible;
+    width: 8px;
+    height: 8px;
+    left: 0px;
+    top: 6px;
+}
+
+#Status_bo {
+    left: 207px;
+    top: 0px;
+    position: absolute;
+    overflow: visible;
+    width: 45px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -1.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(172,172,172,1);
+}
+
+#Line_6_bp {
+    fill: transparent;
+    stroke: rgba(230,230,230,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Line_6_bp {
+    overflow: visible;
+    position: absolute;
+    width: 251px;
+    height: 1px;
+    left: 0.5px;
+    top: 28.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#Group_31 {
+    position: absolute;
+    width: 72px;
+    height: 18px;
+    left: 309px;
+    top: 330px;
+    overflow: visible;
+    --web-animation: fadein 0.4s ease-in-out;
+    --web-action-type: page;
+    --web-action-target: 07.html;
+    cursor: pointer;
+}
+
+#Ver_Todos {
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    overflow: visible;
+    width: 60px;
+    white-space: nowrap;
+    line-height: 28px;
+    margin-top: -7px;
+    text-align: left;
+    font-family: Futura;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(243,145,0,1);
+}
+
+#Path_bs {
+    fill: rgba(243,145,0,1);
+}
+
+.Path_bs {
+    overflow: visible;
+    position: absolute;
+    width: 7.292px;
+    height: 4.257px;
+    transform: translate(-312px, -502px) matrix(1,0,0,1,378.2253,510.8893) rotate(270deg);
+    transform-origin: center;
+    left: 0px;
+    top: 0px;
+}
+
+#Group_32 {
+    position: absolute;
+    width: 287px;
+    height: 132px;
+    left: 80px;
+    top: 380px;
+    overflow: visible;
+}
+
+#Rectangle_16_bu {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(208,224,227,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Rectangle_16_bu {
+    position: absolute;
+    overflow: visible;
+    width: 287px;
+    height: 132px;
+    left: 0px;
+    top: 0px;
+}
+
+#Status_bv {
+    left: 18px;
+    top: 23px;
+    position: absolute;
+    overflow: visible;
+    width: 217px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(58,72,89,1);
+}
+
+#Status_bw {
+    opacity: 0.7;
+    left: 18px;
+    top: 50px;
+    position: absolute;
+    overflow: visible;
+    width: 123px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -1.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(95,117,143,1);
+}
+
+#Group_25_bx {
+    position: absolute;
+    width: 251px;
+    height: 26.5px;
+    left: 18.5px;
+    top: 89.5px;
+    overflow: visible;
+}
+
+#Status_by {
+    left: 0.5px;
+    top: 10.5px;
+    position: absolute;
+    overflow: visible;
+    width: 167px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -2.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: rgba(150,150,150,1);
+    text-transform: uppercase;
+}
+
+#Line_6_bz {
+    fill: transparent;
+    stroke: rgba(230,230,230,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Line_6_bz {
+    overflow: visible;
+    position: absolute;
+    width: 251px;
+    height: 1px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#Group_78 {
+    position: absolute;
+    width: 287px;
+    height: 132px;
+    left: 382px;
+    top: 380px;
+    overflow: visible;
+}
+
+#Rectangle_16_b {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(208,224,227,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Rectangle_16_b {
+    position: absolute;
+    overflow: visible;
+    width: 287px;
+    height: 132px;
+    left: 0px;
+    top: 0px;
+}
+
+#Status_b {
+    left: 18px;
+    top: 23px;
+    position: absolute;
+    overflow: visible;
+    width: 246px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(58,72,89,1);
+}
+
+#Status_ca {
+    opacity: 0.7;
+    left: 18px;
+    top: 50px;
+    position: absolute;
+    overflow: visible;
+    width: 123px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -1.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(95,117,143,1);
+}
+
+#Group_25_b {
+    position: absolute;
+    width: 251px;
+    height: 26.5px;
+    left: 18.5px;
+    top: 89.5px;
+    overflow: visible;
+}
+
+#Status_cb {
+    left: 0.5px;
+    top: 10.5px;
+    position: absolute;
+    overflow: visible;
+    width: 166px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -2.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: rgba(150,150,150,1);
+    text-transform: uppercase;
+}
+
+#Line_6_b {
+    fill: transparent;
+    stroke: rgba(230,230,230,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Line_6_b {
+    overflow: visible;
+    position: absolute;
+    width: 251px;
+    height: 1px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#Group_79 {
+    position: absolute;
+    width: 287px;
+    height: 132px;
+    left: 684px;
+    top: 380px;
+    overflow: visible;
+}
+
+#Rectangle_16_ca {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(208,224,227,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Rectangle_16_ca {
+    position: absolute;
+    overflow: visible;
+    width: 287px;
+    height: 132px;
+    left: 0px;
+    top: 0px;
+}
+
+#Status_cc {
+    left: 18px;
+    top: 23px;
+    position: absolute;
+    overflow: visible;
+    width: 178px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(58,72,89,1);
+}
+
+#Status_cd {
+    opacity: 0.7;
+    left: 18px;
+    top: 50px;
+    position: absolute;
+    overflow: visible;
+    width: 123px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -1.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(95,117,143,1);
+}
+
+#Group_25_cb {
+    position: absolute;
+    width: 251px;
+    height: 26.5px;
+    left: 18.5px;
+    top: 89.5px;
+    overflow: visible;
+}
+
+#Status_ce {
+    left: 0.5px;
+    top: 10.5px;
+    position: absolute;
+    overflow: visible;
+    width: 166px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -2.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: rgba(150,150,150,1);
+    text-transform: uppercase;
+}
+
+#Line_6_cd {
+    fill: transparent;
+    stroke: rgba(230,230,230,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Line_6_cd {
+    overflow: visible;
+    position: absolute;
+    width: 251px;
+    height: 1px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#Group_80 {
+    position: absolute;
+    width: 287px;
+    height: 132px;
+    left: 986px;
+    top: 380px;
+    overflow: visible;
+}
+
+#Rectangle_16_cf {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(208,224,227,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Rectangle_16_cf {
+    position: absolute;
+    overflow: visible;
+    width: 287px;
+    height: 132px;
+    left: 0px;
+    top: 0px;
+}
+
+#Status_cg {
+    left: 18px;
+    top: 23px;
+    position: absolute;
+    overflow: visible;
+    width: 185px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(58,72,89,1);
+}
+
+#Status_ch {
+    opacity: 0.7;
+    left: 18px;
+    top: 50px;
+    position: absolute;
+    overflow: visible;
+    width: 123px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -1.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(95,117,143,1);
+}
+
+#Group_25_ci {
+    position: absolute;
+    width: 251px;
+    height: 26.5px;
+    left: 18.5px;
+    top: 89.5px;
+    overflow: visible;
+}
+
+#Status_cj {
+    left: 0.5px;
+    top: 10.5px;
+    position: absolute;
+    overflow: visible;
+    width: 168px;
+    white-space: nowrap;
+    line-height: 17px;
+    margin-top: -2.5px;
+    text-align: left;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: rgba(150,150,150,1);
+    text-transform: uppercase;
+}
+
+#Line_6_ck {
+    fill: transparent;
+    stroke: rgba(230,230,230,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.Line_6_ck {
+    overflow: visible;
+    position: absolute;
+    width: 251px;
+    height: 1px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#Identifique_o_cliente {
+    left: 80px;
+    top: 50px;
+    position: absolute;
+    overflow: visible;
+    width: 493px;
+    white-space: nowrap;
+    line-height: 72px;
+    margin-top: -12px;
+    text-align: left;
+    font-family: Futura;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    color: #3a4859;
+}
+
+#Pesquise_ou_chame_a_prxima_sen {
+    left: 80px;
+    top: 120px;
+    position: absolute;
+    overflow: visible;
+    width: 382px;
+    white-space: nowrap;
+    line-height: 28px;
+    margin-top: -6px;
+    text-align: left;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #596175;
+}
+
+#Group_15 {
+    position: fixed;
+    width: 1366px;
+    height: 80px;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+}
+
+#Path_1 {
+    fill: rgba(0,76,140,1);
+}
+
+.Path_1 {
+    overflow: visible;
+    position: absolute;
+    width: 1366px;
+    height: 80px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#layer1 {
+    position: absolute;
+    width: 99.388px;
+    height: 22.514px;
+    left: 82px;
+    top: 28.832px;
+    overflow: visible;
+}
+
+#g2995 {
+    position: absolute;
+    width: 99.388px;
+    height: 22.514px;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+}
+
+#g2997 {
+    position: absolute;
+    width: 99.388px;
+    height: 22.514px;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+}
+
+#path3001 {
+    fill: rgba(255,255,255,1);
+}
+
+.path3001 {
+    overflow: visible;
+    position: absolute;
+    width: 82.62px;
+    height: 21.738px;
+    left: 16.768px;
+    top: 0.457px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#path3003 {
+    fill: rgba(255,255,255,1);
+}
+
+.path3003 {
+    overflow: visible;
+    position: absolute;
+    width: 14.911px;
+    height: 10.041px;
+    left: 60.784px;
+    top: 12.03px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#path3005 {
+    fill: rgba(243,154,0,1);
+}
+
+.path3005 {
+    overflow: visible;
+    position: absolute;
+    width: 17.089px;
+    height: 9.999px;
+    left: 61.704px;
+    top: 0.489px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#path3007 {
+    fill: rgba(243,154,0,1);
+}
+
+.path3007 {
+    overflow: visible;
+    position: absolute;
+    width: 17.088px;
+    height: 10.121px;
+    left: 52.559px;
+    top: 12.011px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#path3009 {
+    fill: rgba(255,255,255,1);
+}
+
+.path3009 {
+    overflow: visible;
+    position: absolute;
+    width: 14.384px;
+    height: 10.121px;
+    left: 55.857px;
+    top: 0.367px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#path3011 {
+    fill: rgba(255,255,255,1);
+}
+
+.path3011 {
+    overflow: visible;
+    position: absolute;
+    width: 16.976px;
+    height: 22.514px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+#Recuperao_de_Crdito {
+    left: 206px;
+    top: 29px;
+    position: absolute;
+    overflow: visible;
+    width: 224px;
+    white-space: nowrap;
+    line-height: 46px;
+    margin-top: -14px;
+    text-align: left;
+    font-family: Futura;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgba(255,255,255,1);
+}
+
+#Group_1 {
+    position: absolute;
+    width: 148px;
+    height: 38px;
+    left: 1137.823px;
+    top: 22px;
+    overflow: visible;
+}
+
+#Joo_Alberto_Silva {
+    left: 12.458px;
+    top: 0px;
+    position: absolute;
+    overflow: visible;
+    width: 124px;
+    white-space: nowrap;
+    line-height: 21px;
+    margin-top: -2.5px;
+    text-align: right;
+    font-family: Futura;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+}
+
+#Unidade_7390_-_CEDES {
+    opacity: 0.5;
+    left: 0px;
+    top: 22px;
+    position: absolute;
+    overflow: visible;
+    width: 149px;
+    white-space: nowrap;
+    line-height: 21px;
+    margin-top: -3.5px;
+    text-align: left;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(255,255,255,1);
+}
+
+#UI__Atomos__Icons__padrao__Sor {
+    position: absolute;
+    width: 7.72px;
+    height: 4.507px;
+    left: 139.458px;
+    top: 10px;
+    overflow: visible;
+}
+
+#Path_c {
+    fill: rgba(255,255,255,1);
+}
+
+.Path_c {
+    overflow: visible;
+    position: absolute;
+    width: 7.719px;
+    height: 4.507px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}

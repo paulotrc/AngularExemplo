@@ -1,0 +1,132 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <title>Exemplo</title>
+  <meta charset="utf-8">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+  <meta name="Description" content="Exemplo-Frontend">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!--<meta name="robots" content="noindex"/>-->
+<!--  <script src="./assets/js/jquery-3.3.1.min.js" defer></script>
+  <script src="./assets/js/bootstrap.js" defer></script>-->
+
+ <!-- <link rel="stylesheet" href="./assets/css/styles-exemplo.css">-->
+<!--  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+
+  <!-- CORE Splash Screen CSS -->
+  <style type="text/css">
+   img.center {
+/*      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      vertical-align: middle !important;*/
+      width: 30%;
+    }
+
+   body{
+       //background-color: #2279FF;
+
+
+   }
+
+  .logo-icon{
+     width: 38px;
+   }
+
+
+    #core-splash-screen {
+      display: flex;
+      position: absolute;
+      top: 8px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#00adb3+0,00adb3+21,0065b7+52,0065b7+100 */
+      background: #00adb3; /* Old browsers */
+      background: -moz-linear-gradient(100deg,  #00adb3 0%, #00adb3 21%, #0065b7 52%, #0065b7 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(100deg,  #00adb3 0%,#00adb3 21%,#0065b7 52%,#0065b7 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(135deg,  #00adb3 0%,#00adb3 21%,#0065b7 52%,#0065b7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00adb3', endColorstr='#0065b7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+      z-index: 99999;
+      pointer-events: none;
+      color: #ffffff;
+      align-items:center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+  #core-toolbar {
+     background: #00adb3!important; ; /* Old browsers */
+     background: -moz-linear-gradient(100deg,  #00adb3 0%, #00adb3 21%, #0065b7 52%, #0065b7 100%) !important; /* FF3.6-15 */
+     background: -webkit-linear-gradient(100deg,  #00adb3 0%,#00adb3 21%,#0065b7 52%,#0065b7 100%)!important; ; /* Chrome10-25,Safari5.1-6 */
+     background: linear-gradient(135deg,  #00adb3 0%,#00adb3 21%,#0065b7 52%,#0065b7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00adb3', endColorstr='#0065b7',GradientType=1 ) !important; ; /* IE6-9 fallback on horizontal gradient */
+     color: rgb(255, 255, 255) !important; ;
+   }
+
+   #core-navbar {
+     background: #0277bd !important; ; /* Old browsers */
+   }
+
+   #core-navbar-content{
+     background: #0092B5 !important; ; /* Old browsers */
+   }
+
+   #container-2{
+     background-color: rgba(31, 99, 119, 0.13) !important; /* Old browsers */
+   }
+
+    .main{
+      background-color: #FFFFFF!important;
+    }
+
+   #logo-chatbot-web {
+     border-radius: 5em;
+     margin: 0em 0em 1em 0;
+   }
+
+   @keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}
+  @keyframes opac{from{opacity:0} to{opacity:1}}
+
+   #imgLogo{
+     animation-name: opac, animatezoom;
+     animation-duration: 0.8s;
+     animation-timing-function: linear;
+   }
+
+
+  </style>
+  <!-- / CORE Splash Screen CSS -->
+
+
+</head>
+<body>
+
+  <!-- CORE Splash Screen -->
+
+
+  <core-splash-screen id="core-splash-screen">
+    <img id="imgLogo" src="assets/images/exemplo/exemplo-white.png">
+    <br />
+    <p>Carregando...</p>
+  </core-splash-screen>
+  <audio id="audioPlay">
+    <source src="assets/mp3/vem_pra_exemplo.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    var playJingle = localStorage.getItem("playJingle");
+    if(playJingle && playJingle !== '0'){
+      document.getElementById("audioPlay").play();
+    }
+  </script>
+
+  <!-- / CORE Splash Screen -->
+ <app-root></app-root>
+</body>
+</html>

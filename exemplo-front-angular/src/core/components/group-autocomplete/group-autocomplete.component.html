@@ -1,0 +1,12 @@
+<form [formGroup]="listForm">
+    <mat-form-field>
+        <input id="inputFiltroPortal" type="text" matInput placeholder="{{placeholder}}" formControlName="listGroup" required [matAutocomplete]="autoGroup">
+        <mat-autocomplete #autoGroup="matAutocomplete" (optionSelected)="optionSelectedFunc($event.option.value)">
+            <mat-optgroup *ngFor="let group of listGroupOptions | async">
+                <mat-option *ngFor="let name of group.names" [value]="name">
+                    {{name}}
+                </mat-option>
+            </mat-optgroup>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

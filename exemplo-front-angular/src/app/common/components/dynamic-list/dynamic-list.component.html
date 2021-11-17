@@ -1,0 +1,164 @@
+<div class="dialog-content-wrapper" fxLayout="column" fxLayoutAlign="space-around stretch">
+    <mat-toolbar matDialogTitle *ngIf="showToobar">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{title}}</span>
+            <!--<span fxLayoutAlign="end center">
+                <button *ngIf="hasNotifications" class="button button-add-alert material-icons">
+                    add_alert
+                </button>
+                <button *ngIf="selectedModels.length > 0" class="button button-delete material-icons">
+                    delete
+                </button>
+                <button class="button button-reload material-icons" (click)="reload()" [@rotatedState]='loadingState'>
+                    autorenew
+                </button>
+            </span>-->
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <ngx-datatable class="material"
+                   [rows]="listModels"
+                   [columns]="dynamicColumns"
+                   [loadingIndicator]="loadingIndicator"
+                   [columnMode]="'force'"
+                   [headerHeight]="38"
+                   [footerHeight]="38"
+                   [rowHeight]="'auto'"
+                   [scrollbarH]="true"
+                   [reorderable]="reorderable"
+                   [selectionType]="'checkbox'"
+                   [externalPaging]="true"
+                   [externalSorting]="false"
+                   [count]="page.totalElements"
+                   [offset]="page.pageNumber"
+                   [limit]="page.size"
+                   [@animateStagger]="{value:'50'}"
+                   [selected]="selectedModels"
+                   (page)="setPage($event)"
+                   (select)="onSelectedChange($event)">
+
+        <ngx-datatable-column [width]="48"
+                              [canAutoResize]="true"
+                              [sortable]="false">
+            <!--      <ng-template ngx-datatable-header-template let-value="value" let-selectedModels="selectedModels"
+                               let-selectFn="selectFn">
+                    <mat-checkbox [checked]="selectedModels" (change)="selectFn(!selectedModels); onAllSelected($event);"></mat-checkbox>
+                    &lt;!&ndash;<mat-slide-toggle> Selecionar todos os 200 </mat-slide-toggle>&ndash;&gt;
+                  </ng-template>
+
+                  <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-row="row">
+                    <mat-checkbox [checked]="isSelected" [(ngModel)]="checkboxes[row]" (ngModelChange)="onSelectedChange($event)" (click)="$event.stopPropagation()" (change)=" onAllSelected($event);"></mat-checkbox>
+                  </ng-template>-->
+
+            <ng-template ngx-datatable-header-template
+                         let-value="value"
+                         let-allRowsSelected="selectedModels"
+                         let-selectFn="selectFn">
+                <mat-checkbox [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected);"></mat-checkbox>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template
+                         let-value="value"
+                         let-isSelected="isSelected"
+                         let-onCheckboxChangeFn="onCheckboxChangeFn"
+                         let-row="row">
+                <mat-checkbox [checked]="isSelected" (change)="onCheckboxChangeFn($event)" (click)="$event.stopPropagation()"></mat-checkbox>
+            </ng-template>
+
+        </ngx-datatable-column>
+        <ngx-datatable-column *ngFor="let col of dynamicColumns; index as i " [name]="col.name | translate" >
+            <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                <span *ngIf="col.pipe === 'status'">
+                    {{value === 'A' ? 'Em Atraso' : (value === 'I' ? 'Inadimplente' : 'Prejuízo') }}
+                </span>
+                <span *ngIf="col.pipe === 'status-atendimento'">
+                    {{
+                        value === 'AI' ? 'Atendimento Iniciado':
+                                        (value === 'AC' ? 'Atualização Cadastral' :
+                                            (value === 'CS' ? 'Contratos Selecionados' :
+                                                (value === 'SI' ? 'Simulação' :
+                                                    (value === 'AC' ? 'Atendimento concluído' : '')
+                                                )
+                                            )
+                                        )
+                    }}
+                </span>
+                <span *ngIf="col.pipe === 'prazoEmDias'">
+                    {{value}} dias
+                </span>
+                <span *ngIf="col.pipe === 'prazoEmMeses'">
+                    {{value}} meses
+                </span>
+                <span *ngIf="col.pipe === 'date'">
+                    {{value |  date:'dd/MM/yyyy'}}
+                </span>
+                <span *ngIf="col.pipe === 'datetime'">
+                    {{value |  date:'dd/MM/yyyy HH:mm:ss'}}
+                </span>
+                <span *ngIf="col.pipe === 'currency'">
+                    {{value | realCurrency}}
+                </span>
+                <span *ngIf="col.pipe === 'cpf'">
+                    {{value | mask: '000.000.000-00'}}
+                </span>
+                <span *ngIf="col.pipe === 'cnpj'">
+                    {{value | mask: '99.999.999/9999-99'}}
+                </span>
+                <span *ngIf="col.merge">
+                    {{mergeColumns(i, col.merge, row)}}
+                </span>
+                <span *ngIf="!col.pipe && !col.pipe">
+                     {{row[col.prop]}}
+                </span>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Ações" [width]="10">
+            <ng-template ngx-datatable-cell-template let-row="row">
+                <div fxFlex="row" fxLayoutAlign="end center">
+                    <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                            (click)="$event.stopPropagation();">
+                        <mat-icon class="secondary-text">more_vert</mat-icon>
+                    </button>
+                    <mat-menu #moreMenu="matMenu">
+                        <span *ngFor="let itemButton of menuActions">
+                            <button mat-menu-item aria-label="itemButton.label" (click)="this.onSelectedAction(itemButton.onClick, row)" *ngIf="itemButton.onClick === 'openModal'">
+                                <mat-icon>{{itemButton.icon}}</mat-icon>
+                                <span>{{itemButton.label}}</span>
+                            </button>
+                            <button mat-menu-item aria-label="itemButton.label" (click)="this.extraModalClicked(itemButton.onClick, row)" *ngIf="itemButton.onClick === 'openExtraModal'">
+                                <mat-icon>{{itemButton.icon}}</mat-icon>
+                                <span>{{itemButton.label}}</span>
+                            </button>
+                            <button mat-menu-item aria-label="itemButton.label" (click)="this.redirect(itemButton.onClick, row)" *ngIf="itemButton.onClick === 'redirect'">
+                                <mat-icon>{{itemButton.icon}}</mat-icon>
+                                <span>{{itemButton.label}}</span>
+                            </button>
+                        </span>
+                        <!-- <button mat-menu-item aria-label="edit" (click)="editModel(row)">
+                           <mat-icon>mode_edit</mat-icon>
+                           <span>Editar</span>
+                         </button>
+                         <button mat-menu-item aria-label="edit" (click)="viewModel(row)">
+                           <mat-icon>visibility</mat-icon>
+                           <span>Visualisar</span>
+                         </button>-->
+                    </mat-menu>
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+
+    <!--<div class="selected-column">
+
+        <h4>
+          Selections <small>({{ selectedModels?.length }})</small>
+          &lt;!&ndash;Selections <small>{{selectedModels | json}}</small>&ndash;&gt;
+        </h4>
+        <ul>
+          <li *ngFor="let sel of selectedModels">
+            {{ sel[label] }}
+          </li>
+          <li *ngIf="!selectedModels?.length">No Selections</li>
+        </ul>
+      </div>
+    </div>-->
+</div>

@@ -1,0 +1,35 @@
+<form [formGroup]="formGroup">
+    <mat-dialog-content>
+        <mat-card fxLayout="column">
+            <mat-card-header class="mt-20">
+                <div mat-card-avatar class="visualizar-header-image" style="border-radius: 0%;"></div>
+                <mat-card-title>Permissão Manual</mat-card-title>
+                <mat-card-subtitle>Visualize os perfis de usuário com permissão de aplicar a situação especial manualmente</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content class="m-0">
+
+                <div class="mat-card mat-elevation-z4 p-24 mr-24 mt-16 scrollable-content" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto">
+                    <mat-label required>Perfil do Usuário</mat-label>
+                    <div class="control-group" fxLayout="column" fxLayoutAlign="start stretch" *ngFor="let item of model.perfilInclusaoManualList">
+                        <mat-expansion-panel [expanded]="true">
+                            <div fxLayout="column" fxLayoutAlign="start stretch">
+                                <mat-form-field appearance="fill" fxFlex="50" class="pr-16">
+                                    <input matInput readonly [value]="item.id + ' - ' + item.descricao">
+                                </mat-form-field>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+                    <span class="p-8 m-8"></span>
+                    <mat-label required>Observação</mat-label>
+                    <mat-form-field appearance="fill" fxFlex="50" class="pr-16">
+                        <textarea matInput [value]="model?.observacao" placeholder="Observação"></textarea>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" [mat-dialog-close]="undefined"><mat-icon class="mr-8">cancel</mat-icon>Fechar</button>
+    </mat-dialog-actions>
+</form>

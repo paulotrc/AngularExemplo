@@ -1,0 +1,155 @@
+<!--<siiga-debugger [model]="model"></siiga-debugger>-->
+<!--<code>{{state | json}}</code>-->
+
+<form [formGroup]="formGroup">
+    <mat-accordion class="cliente-headers-align" multi style="min-width: 100%;">
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{title}}
+                </mat-panel-title>
+                <mat-panel-description fxLayoutAlign="end">
+                    <mat-icon>map</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <button *ngIf="state !=='view'" mat-icon-button (click)="addItens()" aria-label="add item">
+                Adicionar Endereço
+                <mat-icon class="material-icons">add_circle</mat-icon>
+            </button>
+            <div [formArrayName]="itemControlAlias">
+                <div class="mb-4 ml-8 control-group" fxLayout="column" fxLayoutAlign="start stretch"
+                     *ngFor="let item of formArrayItens.controls; index as i; trackBy: identifyer" [formGroupName]="i">
+                    <mat-accordion #accordionEnderecos="matAccordion" [multi]=true style="min-width: 100%;" displayMode="flat">
+
+                        <mat-expansion-panel class="mb-16 {{ (i === formArrayItens.controls.length -1 && formGroup.invalid) ? 'new-item' : '' }}" [expanded]="true">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{i + 1}}-    Data de Atualização: {{model[i]?.mesReferencia || currentDate  | date:'M'}}/{{model[i]?.anoReferencia || currentDate  | date:'yyyy'}}
+                                </mat-panel-title>
+                                <mat-panel-description fxLayoutAlign="end">
+                                    <button *ngIf="state !=='view'" mat-icon-button (click)="removeItem(i)" aria-label="delete selected">
+                                        <mat-icon class="material-icons">delete</mat-icon>
+                                    </button>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <div fxLayout="row" fxLayoutAlign="none">
+                                <mat-form-field appearance="{{appearanceField}}" fxFlex="25"
+                                                class="pl-0">
+                                    <mat-label>CEP</mat-label>
+                                    <input matInput
+                                           placeholder="Informe o número do CEP"
+                                           formControlName="cep" mask="00000-000" maxlength="9"
+                                           [readonly]="state ==='view'">
+                                </mat-form-field>
+                                <mat-form-field appearance="{{appearanceField}}" fxFlex="25" class="pl-16">
+                                    <mat-label>UF</mat-label>
+                                    <select matNativeControl required formControlName="uf" placeholder="Informe a UF de residência do cliente"
+                                            [readonly]="state ==='view'">
+                                        <option value="AC">AC</option>
+                                        <option value="AL">AL</option>
+                                        <option value="AM">AM</option>
+                                        <option value="AP">AP</option>
+                                        <option value="BA">BA</option>
+                                        <option value="CE">CE</option>
+                                        <option value="DF">DF</option>
+                                        <option value="ES">ES</option>
+                                        <option value="GO">GO</option>
+                                        <option value="MA">MA</option>
+                                        <option value="MG">MG</option>
+                                        <option value="MS">MS</option>
+                                        <option value="MT">MT</option>
+                                        <option value="PA">PA</option>
+                                        <option value="PB">PB</option>
+                                        <option value="PE">PE</option>
+                                        <option value="PI">PI</option>
+                                        <option value="PR">PR</option>
+                                        <option value="RJ">RJ</option>
+                                        <option value="RN">RN</option>
+                                        <option value="RO">RO</option>
+                                        <option value="RR">RR</option>
+                                        <option value="RS">RS</option>
+                                        <option value="SC">SC</option>
+                                        <option value="SE">SE</option>
+                                        <option value="SP">SP</option>
+                                        <option value="TO">TO</option>
+                                    </select>
+                                </mat-form-field>
+                                <mat-form-field appearance="{{appearanceField}}" fxFlex="25"
+                                                class="pl-16">
+                                    <mat-label>Cidade</mat-label>
+                                    <input matInput
+                                           placeholder="Informe a cidade onde o cliente reside" maxlength="29"
+                                           formControlName="cidade"
+                                           [readonly]="state ==='view'">
+                                </mat-form-field>
+                                <mat-form-field appearance="{{appearanceField}}" fxFlex="25"
+                                                class="pl-16">
+                                    <mat-label>Bairro</mat-label>
+                                    <input matInput
+                                           placeholder="Informe o bairro referente a cidade onde o cliente reside" maxlength="40"
+                                           formControlName="bairro"
+                                           [readonly]="state ==='view'">
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="none">
+                                <mat-form-field appearance="{{appearanceField}}" fxFlex="33"
+                                                class="pl-0">
+                                    <mat-label>Logradouro</mat-label>
+                                    <input matInput
+                                           placeholder="Informe o endereço do cliente" maxlength="50"
+                                           formControlName="logradouro"
+                                           [readonly]="state ==='view'">
+                                </mat-form-field>
+
+                                <mat-form-field appearance="{{appearanceField}}" fxFlex="33"
+                                                class="pl-16">
+                                    <mat-label>Número</mat-label>
+                                    <input matInput
+                                           placeholder="Informe o número do complemento do endereço do cliente"
+                                           formControlName="numero" maxlength="8"
+                                           [readonly]="state ==='view'">
+                                </mat-form-field>
+
+                                <mat-form-field appearance="{{appearanceField}}" fxFlex="34" class="pl-16">
+                                    <mat-label>Complemento</mat-label>
+                                    <input matInput
+                                           placeholder="Informe o complemento do endereço do cliente" maxlength="30"
+                                           formControlName="complemento"
+                                           [readonly]="state ==='view'">
+                                </mat-form-field>
+                            </div>
+
+                        </mat-expansion-panel>
+
+                    </mat-accordion>
+
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</form>
+
+
+<!--<form [formGroup]="formGroup" class="mt-8 mb-8">
+
+                    <button *ngIf="state !=='view'" mat-icon-button (click)="removeItem(i)" aria-label="delete selected" class="mt-4">
+                        <mat-icon class="material-icons">delete</mat-icon>
+                    </button>
+    <div class="mb-8 control-group pl-16" fxLayout="row" fxLayoutAlign="start center">
+        <mat-label class="ml-4">
+            <h3>{{title}}</h3>
+        </mat-label>
+        <span *ngIf="formGroup.valid && state !=='view'" class="material-icons btn-add" (click)="addItens()">add_circle</span>
+    </div>
+    <siiga-debugger [data]="[{label:'Model', value: model}]"></siiga-debugger>
+
+    <div [formArrayName]="itemControlAlias">
+
+
+    </div>
+</form>-->
+<!--
+<br>TESTE=> formGroup.valid: {{formGroup.valid}} <br>
+<pre>{{getFormValidationErrors(formGroup) | json}}</pre>
+<pre>{{formGroup?.value | json}}</pre>-->

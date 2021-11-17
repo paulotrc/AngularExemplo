@@ -1,0 +1,22 @@
+<div id="core-navbar" class="navbar-header" [ngClass]="coreConfig.layout.navbar.secondaryBackground">
+
+    <div class="logo">
+        <span class="logo-text">SIIGA</span>
+    </div>
+
+    <button mat-icon-button class="toggle-sidebar-folded"
+            (click)="toggleSidebarFolded()" fxHide.lt-lg>
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <button mat-icon-button class="toggle-sidebar-opened"
+            (click)="toggleSidebarOpened()" fxHide.gt-md>
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+
+</div>
+
+<div id="core-navbar-content" class="navbar-content" corePerfectScrollbar [corePerfectScrollbarOptions]="{suppressScrollX: true}"
+     [ngClass]="coreConfig.layout.navbar.primaryBackground">
+    <core-navigation layout="vertical"></core-navigation>
+</div>

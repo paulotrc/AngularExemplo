@@ -1,0 +1,19 @@
+situacao-especial-main{
+    mat-toolbar{
+        background-color: #0277bd !important;
+        color: #ffffff !important;
+    }
+}
+
+section div:nth-child(1){
+    margin-top: 20px;
+}
+
+section div:nth-child(2){
+    width: 50%;
+}
+
+.situacao-header-image {
+    background-image: url(~/assets/images/caixa/icons/edit-128.jpg);
+    background-size: cover;
+}

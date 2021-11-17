@@ -1,0 +1,128 @@
+<siiga-debugger [data]="[
+{label:'formGroup CONTRATOS', value:formGroup.value},
+{label:'formGroup STATE', value:state}
+]
+">
+</siiga-debugger>
+
+<form [formGroup]="formGroup">
+
+
+    <div class="mb-8 control-group pl-16" fxLayout="row" fxLayoutAlign="start center">
+        <mat-label class="ml-4">
+            <h3>{{title}}</h3>
+        </mat-label>
+    </div>
+
+    <div [formArrayName]="itemControlAlias">
+
+        <div class="control-group" fxLayout="column" fxLayoutAlign="start stretch"
+             *ngFor="let item of formArrayItens.controls; index as i; trackBy: identifyer" [formGroupName]="i">
+            <mat-accordion #accordionContratos="matAccordion" [multi]=true style="min-width: 100%;" displayMode="flat">
+
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Contrato
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <input matInput readonly formControlName="numeroContrato">
+                            <mat-icon>assignment</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+
+                    <div fxLayout="column" fxLayoutAlign=" none">
+                        <div fxLayout="row" fxLayoutAlign=" none">
+                            <mat-form-field appearance="fill"
+                                            fxFlex="50"
+                                            class="pr-16">
+                                <mat-label>Operação / Produto</mat-label>
+                                <input matInput readonly formControlName="produtoDescricao">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill"
+                                            fxFlex="50"
+                                            class="pr-16">
+                                <mat-label>Status / Prazo</mat-label>
+                                <input matInput readonly formControlName="status">
+                            </mat-form-field>
+
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign=" none">
+                            <mat-form-field appearance="fill"
+                                            fxFlex="33"
+                                            class="pr-16">
+                                <mat-label>Valor CA</mat-label>
+                                <input matInput currencyMask [options]="{ prefix: 'R$ '}"
+                                       formControlName="valorCA" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill"
+                                            fxFlex="34"
+                                            class="pr-16">
+                                <mat-label>Valor Mínimo</mat-label>
+                                <input matInput currencyMask [options]="{ prefix: 'R$ '}"
+                                       formControlName="valorMinimo" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill"
+                                            fxFlex="33"
+                                            class="pr-16">
+                                <mat-label>Dívida Total</mat-label>
+                                <input matInput currencyMask [options]="{ prefix: 'R$ '}"
+                                       formControlName="valorDividaTotal" readonly>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign=" none">
+                            <mat-label fxFlex="100">
+                                <h3>Condições Oferecidas</h3>
+                            </mat-label>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign=" none">
+                            <mat-form-field appearance="outline" fxFlex="25"
+                                            class="pl-0" appearance="{{appearanceField}}">
+                                <mat-label>Valor Negociado</mat-label>
+                                <input matInput [readonly]="state ==='view'"
+                                       placeholder="Favor informar o Valor Negociado"
+                                       formControlName="valorNegociado" 
+                                       [required]="true"
+                                       (keyup)="calcularValorDesconto(item)" 
+                                       (focus)="focusIn($event)"
+                                       currencyMask
+                                       [maxlength]="item?.controls?.valorDividaTotal?.value?.toString().length"
+                                >
+                                <mat-hint class="hint-minimo">
+                                    Mínimo: {{(model[i]?.condicoesOferecidas.valorMinimo | realCurrency).replace('R$','R$ ')}}
+                                </mat-hint>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlex="25" class="pl-16" appearance="{{appearanceField}}">
+                                <mat-label>Desconto %</mat-label>
+                                <input matInput [readonly]="state ==='view'"
+                                       placeholder="Favor informar o Desconto" [required]="true"
+                                       formControlName="desconto"
+                                       (keyup)="calcularValorNegociado(item)"
+                                       (focus)="focusIn($event)"
+                                       currencyMask
+                                        maxlength="5">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+
+            </mat-accordion>
+
+        </div>
+
+    </div>
+</form>
+<div class="mb-16 mt-16 pb-16 pt-16 pl-16"
+     [class.mat-elevation-z2]="true">
+    <div>
+        Total de Dívidas: {{(pValorTotalDividaContratosFormatado | realCurrency).replace('R$','R$ ')}}
+    </div>
+</div>
+<!--
+<br>TESTE=> formGroup.valid: {{formGroup.valid}} <br>
+<pre>{{getFormValidationErrors(formGroup) | json}}</pre>
+<pre>{{formGroup?.value | json}}</pre>-->
