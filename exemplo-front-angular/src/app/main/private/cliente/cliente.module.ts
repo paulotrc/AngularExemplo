@@ -23,7 +23,7 @@ import { SearchClientesComponent } from 'app/main/private/cliente/components/sea
 import { DetailClientesComponent } from 'app/main/private/cliente/components/details/detail-clientes/detail-clientes.component';
 import { ModelService as ServiceAtendimento } from '../atendimento/services/model.service';
 import { MatTabsModule } from '@angular/material/tabs';
-import { SubFormInputListComponent } from 'app/common/components/caixa/forms/sub-form-input-list/sub-form-input-list.component';
+import { SubFormInputListComponent } from 'app/common/components/exemplo/forms/sub-form-input-list/sub-form-input-list.component';
 import {NgxMaskModule} from "ngx-mask";
 
 @NgModule({

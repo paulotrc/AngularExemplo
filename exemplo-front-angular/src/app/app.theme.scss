@@ -15,14 +15,14 @@ $core-black: (
     )
 );
 
-$core-caixa: (
+$core-exemplo: (
     500: #0087b6,
     contrast: (
         500: $dark-primary-text
     )
 );
 
-$laranja-caixa: (
+$laranja-exemplo: (
         500: #D9A841,
         contrast: (
                 500:$dark-primary-text
@@ -162,7 +162,7 @@ body.theme-default {
         primary: $default-primary-palette,
         accent: $default-accent-palette,
         warn: $default-warn-palette,
-        teste: $core-caixa,
+        teste: $core-exemplo,
         laranja: $default-primary-palette
     );
 

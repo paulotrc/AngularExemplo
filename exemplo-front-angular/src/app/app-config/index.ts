@@ -21,7 +21,7 @@ export const coreConfig: CoreConfig = {
             folded             : false,
             hidden             : false,
             position           : 'left',
-            variant            : 'vertical-style-caixa'
+            variant            : 'vertical-style-exemplo'
         },
         toolbar  : {
             customBackgroundColor: true,

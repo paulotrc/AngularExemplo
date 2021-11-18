@@ -1,7 +1,7 @@
 export class consultarCorrelationIdPF {
     public static item = {
         sistema: "0",
-        origemErro: "br.gov.caixa.arqrefservices.negocio.ClienteNegocio",
+        origemErro: "exemplo.arqrefservices.negocio.ClienteNegocio",
         paragrafoErro: "recebeDadosClientePF",
         categoriaErro: "Erro MQ Series",
         codigoErro: "3",
